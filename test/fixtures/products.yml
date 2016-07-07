@@ -1,0 +1,17 @@
+course_a:
+  name: 課程A
+  description: AAA
+  price: 500
+  inventory: 10
+
+course_b:
+  name: 課程B
+  description: BBB
+  price: 600
+  inventory: 20
+
+course_c:
+  name: 課程C
+  description: CCC
+  price: 700
+  inventory: 15
