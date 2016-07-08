@@ -45,6 +45,7 @@ group :development do
   gem 'spring'
 end
 
+gem 'devise'
 gem 'adminscaffold'
 gem 'allpay_client'
 gem 'settingslogic'

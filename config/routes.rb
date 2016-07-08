@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { sessions: 'sessions' }
   resources :products, only: %i[show index]
   resources :line_items, only: %i[create destroy]
   resources :orders, only: %i[index new show create]
