@@ -8,6 +8,7 @@ module CartService
   def add_product_to_cart product, cart
     line_item = cart.line_items.find_by!(product: product, unit_price: product.price)
     line_item.increment(:quantity).save!
+    product.decrement(:inventory).save!
   rescue ActiveRecord::RecordNotFound
     cart.line_items.create!(product: product, unit_price: product.price, quantity: 1)
   end
