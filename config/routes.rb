@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   resources :products, only: %i[show index]
   resources :line_items, only: %i[create destroy]
   resources :orders, only: %i[index new show create]
+  
   namespace :dashboard do
-    resources :products
+    resources :products, :carts
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

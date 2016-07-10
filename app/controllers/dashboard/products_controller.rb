@@ -2,7 +2,7 @@ class Dashboard::ProductsController < DashboardController
   before_action :set_product, only: [:edit, :update, :destroy]
 
   def index
-    @products = Product.all
+    @products = Product.all.sort
     render json: @products
   end
 
@@ -28,11 +28,8 @@ class Dashboard::ProductsController < DashboardController
   end
 
   def destroy
-    if @product.destroy
-      render json: { message: '刪除成功' }, status: :ok
-    else
-      render json: { message: '刪除失敗' }, status: :unprocessable_entity
-    end
+    @product.destroy
+    render json: { message: '刪除成功' }, status: :ok
   end
 
   private
