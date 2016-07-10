@@ -1,0 +1,8 @@
+development:
+  allow_origins: [
+    '*'
+  ]
+production:
+  allow_origins: [
+    '*'
+  ]

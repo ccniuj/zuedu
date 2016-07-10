@@ -25,7 +25,7 @@ module Zuedu
 
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
-        origins '*'
+        origins APP_CONFIG['allow_origins']
         resource '*', :headers => :any, :methods => [:get, :post, :put, :delete, :options]
       end
     end
