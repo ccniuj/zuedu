@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   before_action :set_cart
 
   def set_cart
+    Rails.logger.debug "session cart_id: #{session[:cart_id]}"
     session[:cart_id] ||= Cart.create.id
   end
 

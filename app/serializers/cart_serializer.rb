@@ -7,6 +7,10 @@ class CartSerializer < ActiveModel::Serializer
 
   def line_items
     case instance_options[:template]
+    when 'index'
+      object.line_items.sort.map do |item|
+        LineItemSerializer.new item
+      end
     when 'edit'
       object.line_items.sort.map do |item|
         LineItemSerializer.new item
