@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160708140649) do
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "orders", force: :cascade do |t|
+    t.integer  "cart_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -44,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160708140649) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -86,5 +89,6 @@ ActiveRecord::Schema.define(version: 20160708140649) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "carts"
   add_foreign_key "transactions", "orders"
 end
