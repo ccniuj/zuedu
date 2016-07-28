@@ -4,7 +4,7 @@ class AllpayController < ApplicationController
   def form
     order = Order.find params[:order_id]
     transaction = CartService.create_transaction_from_order order
-    @params = Allpay::Form.new(transaction, ClientBackURL: order_url(order)).params
+    @params = Allpay::Form.new(transaction, ClientBackURL: "#{APP_CONFIG['domain_front']}/orders/show/#{order.id}").params
     render json: { payload: @params, url: "#{Allpay.client.api_host}/Cashier/AioCheckOut" }    
     
     # uri = URI "#{Allpay.client.api_host}/Cashier/AioCheckOut"

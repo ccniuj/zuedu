@@ -1,8 +1,10 @@
 development:
+  domain_front: 'http://localhost:3012'
   allow_origins: [
     '*'
   ]
 production:
+  domain_front: 'http://114.34.175.159:3012'
   allow_origins: [
     '*'
   ]

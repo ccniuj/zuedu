@@ -4,6 +4,11 @@ class OrdersController < ApplicationController
     render json: @orders
   end
 
+  def show
+    @order = Order.find params[:id]
+    render json: @order
+  end
+
   def new
     if current_cart.empty?
       render json: { message: '購物車是空的' }
