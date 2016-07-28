@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+  def index
+    current_cart
+    @orders = Order.all
+  end
+
   def new
     if current_cart.empty?
       render json: { message: '購物車是空的' }
