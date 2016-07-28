@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :line_items, only: %i[create destroy]
   resources :orders, only: %i[index new show create]
   
+  namespace :allpay do
+    get 'form/:order_id', action: :form, as: :form
+    post :callback
+  end
+
   namespace :dashboard do
     resources :products, :carts
   end
