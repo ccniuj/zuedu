@@ -51,6 +51,7 @@ group :development do
 end
 
 gem 'devise'
+gem 'omniauth-facebook'
 gem 'adminscaffold'
 gem 'allpay_client'
 gem 'settingslogic'
