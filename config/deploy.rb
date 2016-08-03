@@ -3,7 +3,6 @@ lock '3.5.0'
 
 set :application, 'zuedu'
 set :repo_url, 'git@github.com:davidjuin0519/zuedu.git'
-set :deploy_to, '/var/app/zuedu'
 set :branch, 'master'
 set :keep_releases, 5
 
