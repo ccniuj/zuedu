@@ -1,10 +1,10 @@
 development:
-  domain_front: 'http://www.zu-edu.com:3010'
+  domain_front: 'http://localhost:3012'
   allow_origins: [
     '*'
   ]
 production:
-  domain_front: 'http://www.zu-edu.com:3000'
+  domain_front: 'http://www.zu-edu.com'
   allow_origins: [
     '*'
   ]

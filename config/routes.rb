@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :products, only: %i[show index]
   resources :line_items, only: %i[create destroy]
   resources :orders, only: %i[index new show create]
-  
+
+  get 'members/get_member' => 'members#get_member'
+
   namespace :allpay do
     get 'form/:order_id', action: :form, as: :form
     post :callback
