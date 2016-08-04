@@ -25,12 +25,10 @@ class OrdersController < ApplicationController
     # head 200, location: allpay_form_path(@order)
   rescue CartService::CartIsEmpty
     @order = Order.new order_params
-    # flash.now.alert = '購物車是空的'
-    # render :new
+    render json: { message: '購物車是空的' }
   rescue ActiveRecord::ActiveRecordError
     @order = Order.new order_params
-    # flash.now.alert = "出錯了：#{$!}"
-    # render :new
+    render json: { message: "出錯了：#{$!}" }
   end
 
 private
