@@ -5,12 +5,12 @@ module CartService
 
   module_function
 
-  def add_product_to_cart product, cart
+  def add_product_to_cart product, cart, quantity
     line_item = cart.line_items.find_by!(product: product, unit_price: product.price)
-    line_item.increment(:quantity).save!
-    product.decrement(:inventory).save!
+    line_item.increment(:quantity, quantity).save!
+    product.decrement(:inventory, quantity).save!
   rescue ActiveRecord::RecordNotFound
-    cart.line_items.create!(product: product, unit_price: product.price, quantity: 1)
+    cart.line_items.create!(product: product, unit_price: product.price, quantity: quantity)
   end
 
   def create_order_from_cart cart, params

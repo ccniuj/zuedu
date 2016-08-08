@@ -1,7 +1,7 @@
 class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
-    CartService.add_product_to_cart(product, current_cart)
+    CartService.add_product_to_cart(product, current_cart, params[:quantity])
     render json: { message: '已加入購物車' }
   rescue ActiveRecord::RecordNotFound
     render json: { message: '找不到該課程' }
