@@ -2,6 +2,7 @@ class LineItem < ActiveRecord::Base
   belongs_to :product
   belongs_to :cart
   belongs_to :order
+  has_many :applicants
   before_destroy :check_order_existence
 
   def price

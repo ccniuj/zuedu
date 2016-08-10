@@ -1,5 +1,5 @@
 development:
-  domain_front: 'http://localhost:3012'
+  domain_front: 'http://localhost:3001'
   allow_origins: [
     '*'
   ]

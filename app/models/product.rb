@@ -1,5 +1,6 @@
 class Product < ActiveRecord::Base
   has_many :line_items
+  has_many :applicants
   before_destroy :check_line_items_presence
   
 private

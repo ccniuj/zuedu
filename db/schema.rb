@@ -11,16 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160803091351) do
+ActiveRecord::Schema.define(version: 20160809032220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
 
+  create_table "applicants", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "member_id"
+    t.string   "name"
+    t.string   "phone_number"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "applicants", ["member_id"], name: "index_applicants_on_member_id", using: :btree
+  add_index "applicants", ["product_id"], name: "index_applicants_on_product_id", using: :btree
+
   create_table "carts", force: :cascade do |t|
+    t.integer  "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "carts", ["member_id"], name: "index_carts_on_member_id", using: :btree
 
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
@@ -108,6 +123,9 @@ ActiveRecord::Schema.define(version: 20160803091351) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "applicants", "members"
+  add_foreign_key "applicants", "products"
+  add_foreign_key "carts", "members"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"

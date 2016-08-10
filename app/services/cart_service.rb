@@ -11,6 +11,11 @@ module CartService
     product.decrement(:inventory, quantity).save!
   rescue ActiveRecord::RecordNotFound
     cart.line_items.create!(product: product, unit_price: product.price, quantity: quantity)
+  ensure
+    quantity.times do 
+      applicant = product.applicants.create!
+      applicant.update member_id: cart.member.id
+    end
   end
 
   def create_order_from_cart cart, params

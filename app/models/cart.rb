@@ -1,6 +1,7 @@
 class Cart < ActiveRecord::Base
   has_many :line_items, dependent: :destroy
   has_many :orders
+  belongs_to :member
   delegate :empty?, to: :line_items
 
   def price
