@@ -21,7 +21,7 @@ module CartService
   def create_order_from_cart cart, params
     raise CartIsEmpty, 'Cart is empty' if cart.empty?
     ActiveRecord::Base.transaction do
-      order = cart.orders.create! params
+      order = cart.member.orders.create! params
       cart.line_items.update_all(order_id: order.id, cart_id: nil)
       order
     end

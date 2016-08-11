@@ -1,7 +1,9 @@
 class OrdersController < ApplicationController
   def index
-    @orders = current_cart.orders.all
+    @orders = current_member.orders.all
     render json: @orders
+  rescue NoMethodError
+    render json: { message: '會員尚未登入' }, status: 401
   end
 
   def show
