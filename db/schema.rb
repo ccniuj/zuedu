@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160809032220) do
   create_table "applicants", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "member_id"
+    t.integer  "order_id"
     t.string   "name"
     t.string   "phone_number"
     t.datetime "created_at",   null: false
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160809032220) do
   end
 
   add_index "applicants", ["member_id"], name: "index_applicants_on_member_id", using: :btree
+  add_index "applicants", ["order_id"], name: "index_applicants_on_order_id", using: :btree
   add_index "applicants", ["product_id"], name: "index_applicants_on_product_id", using: :btree
 
   create_table "carts", force: :cascade do |t|
@@ -74,7 +76,7 @@ ActiveRecord::Schema.define(version: 20160809032220) do
   add_index "members", ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true, using: :btree
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "cart_id"
+    t.integer  "member_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -83,7 +85,7 @@ ActiveRecord::Schema.define(version: 20160809032220) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "orders", ["cart_id"], name: "index_orders_on_cart_id", using: :btree
+  add_index "orders", ["member_id"], name: "index_orders_on_member_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -124,11 +126,12 @@ ActiveRecord::Schema.define(version: 20160809032220) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "applicants", "members"
+  add_foreign_key "applicants", "orders"
   add_foreign_key "applicants", "products"
   add_foreign_key "carts", "members"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
-  add_foreign_key "orders", "carts"
+  add_foreign_key "orders", "members"
   add_foreign_key "transactions", "orders"
 end

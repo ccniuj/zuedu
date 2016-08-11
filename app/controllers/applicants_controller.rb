@@ -2,7 +2,9 @@ class ApplicantsController < ApplicationController
   before_action :set_applicant, only: [:update]
 
   def index
-    @applicants = current_member.applicants.where(product_id: params[:product_id])
+    @applicants = current_member.applicants.
+      where(product_id: params[:product_id]).
+      where(order_id: nil)
     render json: @applicants
   rescue NoMethodError
     render json: { message: '會員尚未登入' }, status: 401
