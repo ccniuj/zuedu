@@ -4,6 +4,13 @@ class LineItemSerializer < ActiveModel::Serializer
              :product_name, 
              :unit_price,
              :name,
+             :birth,
+             :gender,
+             :ss_number,
+             :school,
+             :grade,
+             :food_preference,
+             :note
 
   def product_id
     object.product.id

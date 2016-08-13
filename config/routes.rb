@@ -5,8 +5,7 @@ Rails.application.routes.draw do
 
   resources :carts, only: %i[index]
   resources :products, only: %i[show index]
-  resources :line_items, only: %i[create destroy]
-  resources :applicants, only: %i[index update]
+  resources :line_items, only: %i[index create update destroy]
   resources :orders, only: %i[index new show create]
 
   get 'members/get_member' => 'members#get_member'
