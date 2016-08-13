@@ -5,7 +5,7 @@ class LineItem < ActiveRecord::Base
   before_destroy :check_order_existence
 
   def price
-    unit_price * quantity
+    unit_price
   end
 
 private

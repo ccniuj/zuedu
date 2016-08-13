@@ -19,4 +19,8 @@ class CartSerializer < ActiveModel::Serializer
       []
     end
   end
+
+  def price
+    object.price.to_i
+  end
 end

@@ -1,7 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :member
   has_many :line_items
-  has_many :applicants
   has_many :transactions
   before_destroy :can_not_be_destroyed
 

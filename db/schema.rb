@@ -11,25 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160809032220) do
+ActiveRecord::Schema.define(version: 20160629090520) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "hstore"
-
-  create_table "applicants", force: :cascade do |t|
-    t.integer  "product_id"
-    t.integer  "member_id"
-    t.integer  "order_id"
-    t.string   "name"
-    t.string   "phone_number"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "applicants", ["member_id"], name: "index_applicants_on_member_id", using: :btree
-  add_index "applicants", ["order_id"], name: "index_applicants_on_order_id", using: :btree
-  add_index "applicants", ["product_id"], name: "index_applicants_on_product_id", using: :btree
 
   create_table "carts", force: :cascade do |t|
     t.integer  "member_id"
@@ -43,10 +29,17 @@ ActiveRecord::Schema.define(version: 20160809032220) do
     t.integer  "product_id"
     t.integer  "cart_id"
     t.integer  "order_id"
-    t.decimal  "unit_price", default: 0.0
-    t.integer  "quantity",   default: 0
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.decimal  "unit_price",      default: 0.0
+    t.string   "name",            default: ""
+    t.date     "birth"
+    t.integer  "gender",          default: 1
+    t.string   "ss_number",       default: ""
+    t.string   "school",          default: ""
+    t.integer  "grade",           default: 1
+    t.integer  "food_preference", default: 1
+    t.string   "note",            default: ""
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
@@ -125,9 +118,6 @@ ActiveRecord::Schema.define(version: 20160809032220) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "applicants", "members"
-  add_foreign_key "applicants", "orders"
-  add_foreign_key "applicants", "products"
   add_foreign_key "carts", "members"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"

@@ -5,17 +5,9 @@ module CartService
 
   module_function
 
-  def add_product_to_cart product, cart, quantity
-    line_item = cart.line_items.find_by!(product: product, unit_price: product.price)
-    line_item.increment(:quantity, quantity).save!
-  rescue ActiveRecord::RecordNotFound
-    cart.line_items.create!(product: product, unit_price: product.price, quantity: quantity)
-  ensure
-    product.decrement(:inventory, quantity).save!
-    quantity.times do 
-      applicant = product.applicants.create!
-      applicant.update member_id: cart.member.id
-    end
+  def add_product_to_cart product, cart, payload={}
+    cart.line_items.create!(product: product, unit_price: product.price)
+    product.decrement(:inventory).save!
   end
 
   def create_order_from_cart cart, params
@@ -23,7 +15,7 @@ module CartService
     ActiveRecord::Base.transaction do
       order = cart.member.orders.create! params
       cart.line_items.update_all(order_id: order.id, cart_id: nil)
-      cart.member.applicants.update_all(order_id: order.id)
+      # cart.member.applicants.update_all(order_id: order.id)
       order
     end
   end
