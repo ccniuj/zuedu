@@ -15,7 +15,6 @@ module CartService
     ActiveRecord::Base.transaction do
       order = cart.member.orders.create! params
       cart.line_items.update_all(order_id: order.id, cart_id: nil)
-      # cart.member.applicants.update_all(order_id: order.id)
       order
     end
   end

@@ -7,11 +7,11 @@ class CreateLineItems < ActiveRecord::Migration
       t.decimal :unit_price, default: 0
       t.string :name, default: ''
       t.date :birth
-      t.integer :gender, default: 1
+      t.integer :gender, default: 0
       t.string :ss_number, default: ''
       t.string :school, default: ''
-      t.integer :grade, default: 1
-      t.integer :food_preference, default: 1
+      t.integer :grade, default: 0
+      t.integer :food_preference, default: 0
       t.string :note, default: ''
 
       t.timestamps null: false
