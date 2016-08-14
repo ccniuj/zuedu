@@ -8,7 +8,7 @@ class LineItemsController < ApplicationController
 
   def create
     product = Product.find(params[:product_id])
-    CartService.add_product_to_cart(product, current_cart, params[:payload])
+    CartService.add_product_to_cart(product, current_cart)
     render json: { message: '已加入購物車' }
   rescue ActiveRecord::RecordNotFound
     render json: { message: '找不到該課程' }
@@ -35,6 +35,6 @@ private
   end
 
   def line_item_params
-    params.require(:line_items).permit(:name, :birth, :gender, :ss_number, :school, :grade, :food_preference, :note)
+    params.require(:line_items).permit(:product_id, :name, :birth, :gender, :ss_number, :school, :grade, :food_preference, :note)
   end
 end

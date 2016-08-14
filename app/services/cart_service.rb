@@ -5,7 +5,7 @@ module CartService
 
   module_function
 
-  def add_product_to_cart product, cart, payload={}
+  def add_product_to_cart product, cart
     cart.line_items.create!(product: product, unit_price: product.price)
     product.decrement(:inventory).save!
   end
