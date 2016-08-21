@@ -74,8 +74,9 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.string   "last_name"
     t.string   "email"
     t.string   "address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "payment",    default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "orders", ["member_id"], name: "index_orders_on_member_id", using: :btree
