@@ -4,23 +4,28 @@ class Member < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
-  has_one :cart
-  has_many :orders
+  has_one :cart, dependent: :nullify
+  has_many :orders, dependent: :nullify
+  after_create :send_greeting_email
 
   def self.from_omniauth(auth)
-    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-      user.email = auth.info.email
-      user.password = Devise.friendly_token[0,20]
-      user.name = auth.info.name
-      user.avatar = auth.info.image
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |member|
+      member.email = auth.info.email
+      member.password = Devise.friendly_token[0,20]
+      member.name = auth.info.name
+      member.avatar = auth.info.image
     end
   end
 
   def self.new_with_session(params, session)
-    super.tap do |user|
+    super.tap do |member|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
+        member.email = data["email"] if member.email.blank?
       end
     end
+  end
+
+  def send_greeting_email
+    MemberMailer.greeting(self).deliver_later
   end
 end

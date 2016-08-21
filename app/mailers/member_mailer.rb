@@ -1,9 +1,8 @@
 class MemberMailer < ApplicationMailer
   default from: 'notifications@example.com'
  
-  def welcome_email(member)
+  def greeting(member)
     @member = member
-    @url  = 'http://example.com/login'
-    mail(to: @member.email, subject: 'Welcome to My Awesome Site')
+    mail(to: @member.email, subject: '恭喜您註冊成為築優教育的會員')
   end
 end
