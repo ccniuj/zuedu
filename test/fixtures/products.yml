@@ -2,16 +2,16 @@ course_a:
   name: 課程A
   description: AAA
   price: 500
-  inventory: 10
+  inventory: 100
 
 course_b:
   name: 課程B
   description: BBB
   price: 600
-  inventory: 20
+  inventory: 200
 
 course_c:
   name: 課程C
   description: CCC
   price: 700
-  inventory: 15
+  inventory: 150
