@@ -6,7 +6,6 @@ default: &default
     trade_desc: 築優教育
 
     return_url: http://api.zu-edu.com/allpay/callback
-    # return_url: http://requestb.in/1kvngeo1
 
     # return_url 用於接收從歐付寶送來的交易結果，如果你在本地端開發，
     # 可以到 http://requestb.in 申請一組暫時的網址來測 callback，

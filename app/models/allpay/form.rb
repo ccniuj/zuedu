@@ -11,6 +11,7 @@ module Allpay
         TradeDesc: Settings.allpay.trade_desc,
         ItemName: item_name,
         ReturnURL: Settings.allpay.return_url,
+        PaymentInfoURL: Settings.allpay.return_url,
         ChoosePayment: 'Credit'
       }.merge!(@overwrite_params))
     end

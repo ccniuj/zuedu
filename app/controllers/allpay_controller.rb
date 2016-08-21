@@ -4,7 +4,10 @@ class AllpayController < ApplicationController
   def form
     order = Order.find params[:order_id]
     transaction = CartService.create_transaction_from_order order
-    @params = Allpay::Form.new(transaction, ClientBackURL: "#{APP_CONFIG['domain_front']}/orders/show/#{order.id}").params
+    @params = Allpay::Form.new(transaction, 
+      ClientBackURL: "#{APP_CONFIG['domain_front']}/orders/show/#{order.id}",
+      ChoosePayment: order.payment
+    ).params
     render json: { payload: @params, url: "#{Allpay.client.api_host}/Cashier/AioCheckOut/V2" }    
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path, alert: "查無訂單編號 ##{params[:order_id]}"
