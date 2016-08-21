@@ -5,6 +5,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # MemberMailer.welcome_email(current_member).deliver_later
     @product = Product.find_by id: params[:id]
     render json: @product
   end
