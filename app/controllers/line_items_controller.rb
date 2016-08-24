@@ -9,6 +9,7 @@ class LineItemsController < ApplicationController
   def create
     product = Product.find(params[:product_id])
     CartService.add_product_to_cart(product, current_cart)
+    MemberMailer.add_to_cart_notification(current_member).deliver_later
     render json: { message: '已加入購物車' }
   rescue ActiveRecord::RecordNotFound
     render json: { message: '找不到該課程' }
@@ -16,6 +17,7 @@ class LineItemsController < ApplicationController
 
   def update
     if @line_item.update line_item_params
+      MemberMailer.applicant_confirmation(current_member, @line_item).deliver_later
       render json: { message: '新增成功' }
     else
       render json: { message: '新增失敗' }
