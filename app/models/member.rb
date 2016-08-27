@@ -6,7 +6,7 @@ class Member < ActiveRecord::Base
   devise :omniauthable, :omniauth_providers => [:facebook]
   has_one :cart, dependent: :nullify
   has_many :orders, dependent: :nullify
-  after_create :send_greeting_email
+  after_commit :send_greeting_email, on: :create
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |member|
