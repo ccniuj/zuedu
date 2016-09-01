@@ -13,6 +13,8 @@ class CreateLineItems < ActiveRecord::Migration
       t.integer :grade, default: 0
       t.integer :food_preference, default: 0
       t.string :note, default: ''
+      t.string :parent_phone_number, default: ''
+      t.string :parent_email, default: ''
 
       t.timestamps null: false
     end

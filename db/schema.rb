@@ -29,17 +29,19 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.integer  "product_id"
     t.integer  "cart_id"
     t.integer  "order_id"
-    t.decimal  "unit_price",      default: 0.0
-    t.string   "name",            default: ""
+    t.decimal  "unit_price",          default: 0.0
+    t.string   "name",                default: ""
     t.date     "birth"
-    t.integer  "gender",          default: 0
-    t.string   "ss_number",       default: ""
-    t.string   "school",          default: ""
-    t.integer  "grade",           default: 0
-    t.integer  "food_preference", default: 0
-    t.string   "note",            default: ""
-    t.datetime "created_at",                    null: false
-    t.datetime "updated_at",                    null: false
+    t.integer  "gender",              default: 0
+    t.string   "ss_number",           default: ""
+    t.string   "school",              default: ""
+    t.integer  "grade",               default: 0
+    t.integer  "food_preference",     default: 0
+    t.string   "note",                default: ""
+    t.string   "parent_phone_number", default: ""
+    t.string   "parent_email",        default: ""
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
