@@ -40,3 +40,7 @@ bower.json
 .byebug_history
 
 dump.rdb
+
+Capfile
+config/deploy.rb
+config/deploy/
