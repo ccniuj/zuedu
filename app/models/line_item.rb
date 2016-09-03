@@ -6,6 +6,14 @@ class LineItem < ActiveRecord::Base
   enum gender: [ 'male', 'female' ]
   enum food_preference: ['normal', 'veggie', 'no_beef', 'other']
 
+  validates :name, :birth, :gender, :ss_number, 
+            :school, :grade, :food_preference, 
+            :parent_phone_number, :parent_email, 
+            presence: true, 
+            on: :update
+  validates :parent_phone_number, format: { with: /foo/,
+            message: "foo" }
+
   def price
     unit_price
   end

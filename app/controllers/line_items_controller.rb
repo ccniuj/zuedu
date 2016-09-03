@@ -12,7 +12,7 @@ class LineItemsController < ApplicationController
     MemberMailer.add_to_cart_notification(current_member).deliver_later
     render json: { message: '已加入購物車' }
   rescue ActiveRecord::RecordNotFound
-    render json: { message: '找不到該課程' }
+    render json: { message: '找不到該課程' }, status: 422
   end
 
   def update
@@ -20,7 +20,7 @@ class LineItemsController < ApplicationController
       MemberMailer.applicant_confirmation(current_member, @line_item).deliver_later
       render json: { message: '新增成功' }
     else
-      render json: { message: '新增失敗' }
+      render json: { message: '新增失敗', error: @line_item.errors.full_messages }, status: 422
     end
   end
 
@@ -28,7 +28,7 @@ class LineItemsController < ApplicationController
     current_cart.line_items.find(params[:id]).destroy
     render json: { message: '已從購物車移除' }
   rescue ActiveRecord::RecordNotFound
-    render json: { message: '購物車內找不到該課程' }
+    render json: { message: '購物車內找不到該課程' }, status: 422
   end
 
 private
@@ -37,6 +37,6 @@ private
   end
 
   def line_item_params
-    params.require(:line_items).permit(:product_id, :name, :birth, :gender, :ss_number, :school, :grade, :food_preference, :note)
+    params.require(:line_items).permit(:product_id, :name, :birth, :gender, :ss_number, :school, :grade, :food_preference, :note, :parent_phone_number, :parent_email)
   end
 end
