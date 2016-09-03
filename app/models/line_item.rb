@@ -11,8 +11,8 @@ class LineItem < ActiveRecord::Base
             :parent_phone_number, :parent_email, 
             presence: true, 
             on: :update
-  validates :parent_phone_number, format: { with: /foo/,
-            message: "foo" }
+  validates :parent_phone_number, format: { with: /foo/, message: "foo" }, 
+            on: :update
 
   def price
     unit_price
