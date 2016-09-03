@@ -5,6 +5,9 @@ set :application, 'zuedu'
 set :repo_url, 'git@github.com:davidjuin0519/zuedu.git'
 set :branch, 'master'
 set :keep_releases, 5
+set :pty, false
+set :sidekiq_monit_default_hooks, false
+set :sidekiq_config, 'config/sidekiq.yml'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -47,7 +50,7 @@ namespace :deploy do
       # end
     end
   end
-
+  set :sidekiq_monit_default_hooks, false
   desc 'Run rake db:migrate'
   task :migrate do
     on roles :all do
