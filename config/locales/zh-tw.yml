@@ -1,0 +1,57 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+zh-TW:
+  activerecord:
+    attributes:
+      line_item:
+        name: '姓名'
+        birth: '生日'
+        gender: '性別'
+        ss_number: '身分證字號'
+        school: '學校'
+        grade: '年級'
+        parent_phone_number: '家長電話'
+        parent_email: '家長電子信箱'
+        food_preference: '飲食需求'
+    errors:
+      models:
+        line_item:
+          attributes:
+            name:
+              blank: '為必填欄位'
+            birth:
+              blank: '為必填欄位'
+            gender:
+              blank: '為必填欄位'
+            ss_number:
+              blank: '為必填欄位'
+            school:
+              blank: '為必填欄位'
+            grade:
+              blank: '為必填欄位'
+            parent_phone_number:
+              blank: '為必填欄位'
+              invalid: '需為連續10碼，例如：0912345678'
+            parent_email:
+              blank: '為必填欄位'
+            food_preference:
+              blank: '為必填欄位'
