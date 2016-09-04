@@ -10,7 +10,9 @@ class LineItemSerializer < ActiveModel::Serializer
              :school,
              :grade,
              :food_preference,
-             :note
+             :note,
+             :parent_phone_number,
+             :parent_email
 
   def product_id
     object.product.id

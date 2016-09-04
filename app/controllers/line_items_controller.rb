@@ -20,7 +20,7 @@ class LineItemsController < ApplicationController
       MemberMailer.applicant_confirmation(current_member, @line_item).deliver_later
       render json: { message: '新增成功' }
     else
-      render json: { message: '新增失敗', error: @line_item.errors.full_messages }, status: 422
+      render json: { message: @line_item.errors.full_messages.join(',') }, status: 422
     end
   end
 
