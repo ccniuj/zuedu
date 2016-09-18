@@ -1,5 +1,8 @@
 class OrderSerializer < ActiveModel::Serializer
   attributes :id, 
+             :name,
+             :member_id,
+             :member_name,
              :first_name,
              :last_name,
              :payment,
@@ -12,5 +15,13 @@ class OrderSerializer < ActiveModel::Serializer
     object.line_items.sort.map do |item|
       LineItemSerializer.new item
     end
+  end
+
+  def name
+    "#{object.last_name}#{object.first_name}"
+  end
+
+  def member_name
+    object.member&.name
   end
 end

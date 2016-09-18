@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    resources :products, :carts
+    resources :products, :carts, :members, :orders
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
