@@ -1,0 +1,23 @@
+detail_1:
+  description: 台北
+  product_id: 1
+
+detail_2:
+  description: 新竹
+  product_id: 1
+
+detail_3:
+  description: 台北
+  product_id: 2
+
+detail_4:
+  description: 桃園
+  product_id: 2
+
+detail_5:
+  description: 新竹
+  product_id: 3
+
+detail_6:
+  description: 桃園
+  product_id: 3
