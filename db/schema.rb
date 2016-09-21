@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.integer  "product_id"
     t.integer  "cart_id"
     t.integer  "order_id"
+    t.integer  "product_detail_id"
     t.decimal  "unit_price",          default: 0.0
     t.string   "name",                default: ""
     t.date     "birth"
@@ -46,6 +47,7 @@ ActiveRecord::Schema.define(version: 20160629090520) do
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
+  add_index "line_items", ["product_detail_id"], name: "index_line_items_on_product_detail_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "members", force: :cascade do |t|
@@ -82,6 +84,17 @@ ActiveRecord::Schema.define(version: 20160629090520) do
   end
 
   add_index "orders", ["member_id"], name: "index_orders_on_member_id", using: :btree
+
+  create_table "product_details", force: :cascade do |t|
+    t.integer  "product_id"
+    t.string   "description"
+    t.date     "from"
+    t.date     "to"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "product_details", ["product_id"], name: "index_product_details_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -124,7 +137,9 @@ ActiveRecord::Schema.define(version: 20160629090520) do
   add_foreign_key "carts", "members"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
+  add_foreign_key "line_items", "product_details"
   add_foreign_key "line_items", "products"
   add_foreign_key "orders", "members"
+  add_foreign_key "product_details", "products"
   add_foreign_key "transactions", "orders"
 end
