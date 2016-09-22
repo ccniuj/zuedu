@@ -1,23 +1,35 @@
 detail_1:
   description: 台北
   product_id: 1
+  from: 2016-09-01
+  to: 2016-09-05
 
 detail_2:
   description: 新竹
   product_id: 1
+  from: 2016-09-01
+  to: 2016-09-05
 
 detail_3:
   description: 台北
   product_id: 2
+  from: 2016-09-01
+  to: 2016-09-05
 
 detail_4:
   description: 桃園
   product_id: 2
+  from: 2016-09-01
+  to: 2016-09-05
 
 detail_5:
   description: 新竹
   product_id: 3
+  from: 2016-09-01
+  to: 2016-09-05
 
 detail_6:
   description: 桃園
   product_id: 3
+  from: 2016-09-01
+  to: 2016-09-05
