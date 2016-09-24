@@ -2,6 +2,8 @@ class LineItemSerializer < ActiveModel::Serializer
   attributes :id, 
              :product_id, 
              :product_name, 
+             :product_detail_id,
+             :product_detail_description,
              :unit_price,
              :name,
              :birth,
@@ -20,6 +22,10 @@ class LineItemSerializer < ActiveModel::Serializer
 
   def product_name
     object.product.name
+  end
+
+  def product_detail_description
+    object.product_detail.description
   end
 
   def unit_price

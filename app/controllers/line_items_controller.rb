@@ -8,7 +8,7 @@ class LineItemsController < ApplicationController
 
   def create
     product = Product.find(params[:product_id])
-    CartService.add_product_to_cart(product, current_cart)
+    CartService.add_product_to_cart(product, params[:product_detail_id], current_cart)
     MemberMailer.add_to_cart_notification(current_member).deliver_later
     render json: { message: '已加入購物車' }
   rescue ActiveRecord::RecordNotFound
@@ -37,6 +37,6 @@ private
   end
 
   def line_item_params
-    params.require(:line_items).permit(:product_id, :name, :birth, :gender, :ss_number, :school, :grade, :food_preference, :note, :parent_phone_number, :parent_email)
+    params.require(:line_items).permit(:product_id, :product_detail_id, :name, :birth, :gender, :ss_number, :school, :grade, :food_preference, :note, :parent_phone_number, :parent_email)
   end
 end
