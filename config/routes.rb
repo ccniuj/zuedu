@@ -16,7 +16,10 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    resources :products, :product_details, :carts, :members, :orders
+    resources :products, :product_details, :carts, :members
+    resources :orders do
+      post 'remind', on: :collection
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

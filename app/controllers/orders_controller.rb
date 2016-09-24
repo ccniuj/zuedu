@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :set_order, only: [ :show ]
   def index
     @orders = current_member.orders.all
     render json: @orders
@@ -7,7 +8,6 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find params[:id]
     render json: @order
   end
 
@@ -32,6 +32,9 @@ class OrdersController < ApplicationController
   end
 
 private
+  def set_order
+    @order = Order.find params[:id]
+  end
 
   def order_params
     params.require(:orders).permit(:first_name, :last_name, :email, :address, :payment)

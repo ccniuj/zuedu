@@ -1,5 +1,5 @@
 class Dashboard::OrdersController < DashboardController
-  before_action :set_order, only: [:edit, :update, :destroy]
+  before_action :set_order, only: [ :edit, :update, :destroy, :remind ]
 
   def index
     @orders = Order.all.sort
@@ -21,6 +21,11 @@ class Dashboard::OrdersController < DashboardController
   def destroy
     @order.destroy
     render json: { message: '刪除成功' }, status: :ok
+  end
+
+  def remind
+    MemberMailer.payment_reminding(@order.member).deliver_later
+    render json: { message: '通知成功' }, status: :ok
   end
 
   private

@@ -22,4 +22,9 @@ class MemberMailer < ApplicationMailer
     @transaction = transaction
     mail(to: @member.email, subject: '恭喜您付款成功')
   end
+
+  def payment_reminding(member)
+    @member = member
+    mail(to: @member.email, subject: '提醒您尚未繳費')
+  end
 end
