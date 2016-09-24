@@ -18,7 +18,7 @@ class LineItemsController < ApplicationController
   def update
     if @line_item.update line_item_params
       MemberMailer.applicant_confirmation(current_member, @line_item).deliver_later
-      render json: { message: '新增成功' }
+      render json: { message: '更新成功' }
     else
       render json: { message: @line_item.errors.full_messages.first }, status: 422
     end

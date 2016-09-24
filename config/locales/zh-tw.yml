@@ -26,6 +26,9 @@ zh-TW:
         name: '姓名'
         birth: '生日'
         gender: '性別'
+        gender:
+          male: '男'
+          female: '女'
         ss_number: '身分證字號'
         school: '學校'
         grade: '年級'

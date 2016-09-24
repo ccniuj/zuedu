@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    resources :products, :product_details, :carts, :members
+    resources :products, :product_details, :carts, :members, :line_items
     resources :orders do
       post 'remind', on: :collection
     end
