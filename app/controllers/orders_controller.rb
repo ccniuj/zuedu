@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [ :show ]
+
   def index
     @orders = current_member.orders.all
     render json: @orders

@@ -9,11 +9,18 @@ class OrderSerializer < ActiveModel::Serializer
              :email,
              :address,
              :line_items,
+             :transactions,
              :created_at
 
   def line_items
     object.line_items.sort.map do |item|
       LineItemSerializer.new item
+    end
+  end
+
+  def transactions
+    object.transactions.sort.map do |t|
+      TransactionSerializer.new t
     end
   end
 
