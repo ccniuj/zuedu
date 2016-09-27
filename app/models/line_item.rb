@@ -29,6 +29,10 @@ class LineItem < ActiveRecord::Base
                    line_item.product.name
                  when 'product_detail_id'
                    line_item.product_detail.description
+                 when 'gender'
+                   I18n.t "activerecord.attributes.line_item.gender_value.#{line_item.gender}"
+                 when 'food_preference'
+                   I18n.t "activerecord.attributes.line_item.food_preference_value.#{line_item.food_preference}"
                  else
                    line_item[col]
                  end

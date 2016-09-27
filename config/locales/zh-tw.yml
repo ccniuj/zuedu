@@ -41,6 +41,11 @@ zh-TW:
         parent_phone_number: '家長電話'
         parent_email: '家長電子信箱'
         food_preference: '飲食需求'
+        food_preference_value:
+          normal: '正常'
+          veggie: '素食'
+          no_beef: '不吃牛肉'
+          other: '其他'
         note: '備註'
         created_at: '建立日期'
         updated_at: '更新日期'
