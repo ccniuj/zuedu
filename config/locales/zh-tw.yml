@@ -23,10 +23,16 @@ zh-TW:
   activerecord:
     attributes:
       line_item:
+        id: '報名編號'
+        product_id: '課程'
+        product_detail_id: '場次'
+        cart_id: '購物車編號'
+        order_id: '訂單編號'
+        unit_price: '報名價格'
         name: '姓名'
         birth: '生日'
         gender: '性別'
-        gender:
+        gender_value:
           male: '男'
           female: '女'
         ss_number: '身分證字號'
@@ -35,6 +41,9 @@ zh-TW:
         parent_phone_number: '家長電話'
         parent_email: '家長電子信箱'
         food_preference: '飲食需求'
+        note: '備註'
+        created_at: '建立日期'
+        updated_at: '更新日期'
     errors:
       models:
         line_item:

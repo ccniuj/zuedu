@@ -19,6 +19,24 @@ class LineItem < ActiveRecord::Base
     unit_price
   end
 
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << column_names.map { |c| I18n.t "activerecord.attributes.line_item.#{c}" }
+      includes(:product, :product_detail, :cart, :order).each do |line_item|
+        csv << column_names.map do |col|
+                 case col
+                 when 'product_id'
+                   line_item.product.name
+                 when 'product_detail_id'
+                   line_item.product_detail.description
+                 else
+                   line_item[col]
+                 end
+               end
+      end
+    end
+  end
+
 private
   def check_order_existence
     unless order_id.nil?

@@ -23,6 +23,10 @@ class Dashboard::LineItemsController < DashboardController
     render json: { message: '刪除成功' }, status: :ok
   end
 
+  def download
+    render json: { csv: LineItem.to_csv, message: '下載成功' }
+  end
+
   private
     def set_line_item
       @line_item = LineItem.find params[:id]

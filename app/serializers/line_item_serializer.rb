@@ -33,7 +33,7 @@ class LineItemSerializer < ActiveModel::Serializer
   end
 
   def gender_t
-    I18n.t "activerecord.attributes.line_item.gender.#{object.gender}"
+    I18n.t "activerecord.attributes.line_item.gender_value.#{object.gender}"
   end
 
   def unit_price
