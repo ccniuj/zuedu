@@ -19,11 +19,12 @@ class LineItem < ActiveRecord::Base
     unit_price
   end
 
-  def self.to_csv
+  def self.to_csv cols
+    cols = cols.split(',')
     CSV.generate do |csv|
-      csv << column_names.map { |c| I18n.t "activerecord.attributes.line_item.#{c}" }
+      csv << cols.map { |c| I18n.t "activerecord.attributes.line_item.#{c}" }
       includes(:product, :product_detail, :cart, :order).each do |line_item|
-        csv << column_names.map do |col|
+        csv << cols.map do |col|
                  case col
                  when 'product_id'
                    line_item.product.name

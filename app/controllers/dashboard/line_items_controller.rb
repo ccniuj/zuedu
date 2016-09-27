@@ -24,7 +24,7 @@ class Dashboard::LineItemsController < DashboardController
   end
 
   def download
-    render json: { csv: LineItem.to_csv, message: '下載成功' }
+    render json: { csv: LineItem.to_csv(params[:cols]), message: '下載成功' }
   end
 
   private
