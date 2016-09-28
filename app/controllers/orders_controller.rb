@@ -22,14 +22,18 @@ class OrdersController < ApplicationController
   end
 
   def create
+    params[:orders][:discount_id] = Discount.find_by_key!(params[:orders][:discount_key])&.id if params[:orders][:discount_key].present?
     @order = CartService.create_order_from_cart current_cart, order_params
     redirect_to allpay_form_path(@order), status: 200
   rescue CartService::CartIsEmpty
     @order = Order.new order_params
-    render json: { message: '購物車是空的' }
-  rescue ActiveRecord::ActiveRecordError
+    render json: { message: '購物車是空的' }, status: 422
+  rescue ActiveRecord::RecordInvalid
     @order = Order.new order_params
-    render json: { message: "出錯了：#{$!}" }
+    render json: { message: "#{$!}" }, status: 422
+  rescue ActiveRecord::RecordNotFound
+    @order = Order.new order_params
+    render json: { message: '找不到折扣代碼，請重新輸入' }, status: 422
   end
 
 private
@@ -38,6 +42,6 @@ private
   end
 
   def order_params
-    params.require(:orders).permit(:first_name, :last_name, :email, :address, :payment)
+    params.require(:orders).permit(:first_name, :last_name, :email, :address, :payment, :discount_id)
   end
 end

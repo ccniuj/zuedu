@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    resources :products, :product_details, :carts, :members
+    resources :products, :product_details, :carts, :members, :discounts
     resources :line_items do
       get 'download', on: :collection
     end

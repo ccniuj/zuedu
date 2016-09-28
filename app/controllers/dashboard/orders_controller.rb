@@ -11,11 +11,14 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def update
+    params[:orders][:discount_id] = Discount.find_by_key!(params[:orders][:discount_key])&.id if params[:orders][:discount_key].present?
     if @order.update order_params
       render json: { message: '更新成功' }, status: :ok
     else
       render json: { message: '更新失敗' }, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotFound
+    render json: { message: '找不到折扣代碼，請重新輸入' }, status: :unprocessable_entity
   end
 
   def destroy
@@ -34,6 +37,6 @@ class Dashboard::OrdersController < DashboardController
     end
 
     def order_params
-      params.require(:orders).permit(:first_name, :last_name, :email)
+      params.require(:orders).permit(:discount_id, :first_name, :last_name, :email, :address)
     end
 end

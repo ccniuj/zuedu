@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20160629090520) do
 
   add_index "carts", ["member_id"], name: "index_carts_on_member_id", using: :btree
 
+  create_table "discounts", force: :cascade do |t|
+    t.string   "name",          default: ""
+    t.string   "key",           default: ""
+    t.integer  "prerequisite",  default: 0
+    t.integer  "discount_type", default: 0
+    t.float    "factor",        default: 0.0
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
   create_table "line_items", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "cart_id"
@@ -74,15 +84,17 @@ ActiveRecord::Schema.define(version: 20160629090520) do
 
   create_table "orders", force: :cascade do |t|
     t.integer  "member_id"
+    t.integer  "discount_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.string   "address"
-    t.integer  "payment",    default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "payment",     default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
+  add_index "orders", ["discount_id"], name: "index_orders_on_discount_id", using: :btree
   add_index "orders", ["member_id"], name: "index_orders_on_member_id", using: :btree
 
   create_table "product_details", force: :cascade do |t|
@@ -139,6 +151,7 @@ ActiveRecord::Schema.define(version: 20160629090520) do
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "product_details"
   add_foreign_key "line_items", "products"
+  add_foreign_key "orders", "discounts"
   add_foreign_key "orders", "members"
   add_foreign_key "product_details", "products"
   add_foreign_key "transactions", "orders"

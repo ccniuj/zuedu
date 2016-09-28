@@ -2,6 +2,7 @@ class OrderSerializer < ActiveModel::Serializer
   attributes :id, 
              :name,
              :member_id,
+             :discount_key,
              :member_name,
              :first_name,
              :last_name,
@@ -30,5 +31,9 @@ class OrderSerializer < ActiveModel::Serializer
 
   def member_name
     object.member&.name
+  end
+
+  def discount_key
+    object.discount&.key
   end
 end
