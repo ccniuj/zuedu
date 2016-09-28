@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.integer  "prerequisite",  default: 0
     t.integer  "discount_type", default: 0
     t.float    "factor",        default: 0.0
+    t.date     "from"
+    t.date     "to"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
   end
@@ -100,21 +102,31 @@ ActiveRecord::Schema.define(version: 20160629090520) do
   create_table "product_details", force: :cascade do |t|
     t.integer  "product_id"
     t.string   "description"
-    t.date     "from"
-    t.date     "to"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "place"
+    t.date     "date_from",   default: '2016-09-28'
+    t.date     "date_to",     default: '2016-09-28'
+    t.time     "time_from",   default: '2000-01-01 09:00:00'
+    t.time     "time_to",     default: '2000-01-01 17:00:00'
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
   end
 
   add_index "product_details", ["product_id"], name: "index_product_details_on_product_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
+    t.string   "subtitle"
     t.text     "description"
+    t.text     "dimension"
+    t.string   "cover_image_url"
+    t.string   "outline_image_url"
+    t.string   "dimension_image_url"
+    t.string   "target"
+    t.string   "pricing"
     t.integer  "price"
     t.integer  "inventory"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
   end
 
   create_table "transactions", force: :cascade do |t|
