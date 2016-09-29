@@ -9,11 +9,10 @@ class Order < ActiveRecord::Base
   validates :first_name, :last_name, :payment, :email, :address, presence: true 
 
   def price
-    case discount.discount_type
-    when 'absolute'
-      discount.factor
-    when 'relative'
-      line_items.to_a.sum(&:price) * discount.factor
+    if discount_id
+      line_items.to_a.sum(&:price) - discount.factor
+    else
+      line_items.to_a.sum(&:price)
     end
   end
 
@@ -24,7 +23,8 @@ class Order < ActiveRecord::Base
 private
 
   def match_discount
-    update_column :discount_id, Discount.where('prerequisite <= ?', line_items.count).order(prerequisite: :DESC).first&.id
+    group_discount_id = Discount.where('prerequisite <= ?', line_items.count).order(prerequisite: :DESC).first&.id
+    update_column :discount_id, group_discount_id
   end
 
   def can_not_be_destroyed
