@@ -1,9 +1,9 @@
 class LineItemSerializer < ActiveModel::Serializer
   attributes :id,
              :product_id,
-             :product_name,
              :product_detail_id,
              :product_detail_description,
+             :product_name,
              :cart_id,
              :order_id,
              :is_paid,
@@ -21,11 +21,11 @@ class LineItemSerializer < ActiveModel::Serializer
              :parent_email
 
   def product_id
-    object.product.id
+    object.product_detail.product.id
   end
 
   def product_name
-    object.product.name
+    object.product_detail.product.name
   end
 
   def product_detail_description

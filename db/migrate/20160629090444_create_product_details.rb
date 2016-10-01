@@ -4,6 +4,8 @@ class CreateProductDetails < ActiveRecord::Migration
       t.references :product, index: true
       t.string :description
       t.string :place
+      t.integer :price
+      t.integer :inventory
       t.date :date_from, default: Time.now
       t.date :date_to, default: Time.now
       t.time :time_from, default: '09:00'

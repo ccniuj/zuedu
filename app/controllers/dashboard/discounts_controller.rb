@@ -15,7 +15,7 @@ class Dashboard::DiscountsController < DashboardController
     if @discount.save
       render json: { message: '新增成功' }, status: :created
     else
-      render json: { message: '新增失敗' }, status: :unprocessable_entity
+      render json: { message: @discount.errors.full_messages.first }, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +23,7 @@ class Dashboard::DiscountsController < DashboardController
     if @discount.update discount_params
       render json: { message: '更新成功' }, status: :ok
     else
-      render json: { message: '更新失敗' }, status: :unprocessable_entity
+      render json: { message: @discount.errors.full_messages.first }, status: :unprocessable_entity
     end
   end
 
@@ -38,6 +38,6 @@ class Dashboard::DiscountsController < DashboardController
     end
 
     def discount_params
-      params.require(:discounts).permit(:name, :prerequisite, :discount_type, :factor)
+      params.require(:discounts).permit(:name, :prerequisite, :discount_type, :factor, :date_from, :date_to)
     end
 end

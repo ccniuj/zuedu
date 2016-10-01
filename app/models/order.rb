@@ -23,8 +23,7 @@ class Order < ActiveRecord::Base
 private
 
   def match_discount
-    group_discount_id = Discount.where('prerequisite <= ?', line_items.count).order(prerequisite: :DESC).first&.id
-    update_column :discount_id, group_discount_id
+    update_column :discount_id, DiscountMatcher.match(self)
   end
 
   def can_not_be_destroyed

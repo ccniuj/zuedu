@@ -17,7 +17,7 @@ module Allpay
     end
 
     def item_name
-      @transaction.order.line_items.includes(:product).map{|i| "#{i.product.name} x 1"}.join('#')
+      @transaction.order.line_items.includes(:product_detail).map{|i| "#{i.product_detail.product.name} x 1"}.join('#')
     end
   end
 end

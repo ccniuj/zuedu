@@ -9,8 +9,6 @@ course_a:
   cover_image_url: /images/product_1_cover.png
   outline_image_url: /images/product_1_outline.png
   dimension_image_url: /images/product_1_dimension.png
-  price: 7500
-  inventory: 100
 
 course_b:
   id: 2
@@ -23,8 +21,6 @@ course_b:
   cover_image_url: /images/product_2_cover.png
   outline_image_url: /images/product_1_outline.png
   dimension_image_url: /images/product_1_dimension.png
-  price: 7500
-  inventory: 200
 
 course_c:
   id: 3
@@ -37,5 +33,3 @@ course_c:
   cover_image_url: /images/product_3_cover.png
   outline_image_url: /images/product_1_outline.png
   dimension_image_url: /images/product_1_dimension.png
-  price: 7500
-  inventory: 150

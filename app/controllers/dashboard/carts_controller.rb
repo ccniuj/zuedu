@@ -13,11 +13,6 @@ class Dashboard::CartsController < DashboardController
   def update
   end
 
-  def destroy
-    @cart.destroy
-    render json: { message: '刪除成功' }, status: :ok
-  end
-
   private
     def set_cart
       @cart = Cart.find params[:id]

@@ -6,8 +6,8 @@ class CreateDiscounts < ActiveRecord::Migration
       t.integer :prerequisite, default: 0
       t.integer :discount_type, default: 0
       t.float :factor, default: 0.0
-      t.date :from
-      t.date :to
+      t.date :date_from, default: Time.now
+      t.date :date_to, default: Time.now
 
       t.timestamps null: false
     end

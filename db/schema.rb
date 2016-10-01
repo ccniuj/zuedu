@@ -31,17 +31,16 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.integer  "prerequisite",  default: 0
     t.integer  "discount_type", default: 0
     t.float    "factor",        default: 0.0
-    t.date     "from"
-    t.date     "to"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.date     "date_from",     default: '2016-10-01'
+    t.date     "date_to",       default: '2016-10-01'
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "line_items", force: :cascade do |t|
-    t.integer  "product_id"
+    t.integer  "product_detail_id"
     t.integer  "cart_id"
     t.integer  "order_id"
-    t.integer  "product_detail_id"
     t.decimal  "unit_price",          default: 0.0
     t.string   "name",                default: ""
     t.date     "birth"
@@ -60,7 +59,6 @@ ActiveRecord::Schema.define(version: 20160629090520) do
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_detail_id"], name: "index_line_items_on_product_detail_id", using: :btree
-  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -103,8 +101,10 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.integer  "product_id"
     t.string   "description"
     t.string   "place"
-    t.date     "date_from",   default: '2016-09-28'
-    t.date     "date_to",     default: '2016-09-28'
+    t.integer  "price"
+    t.integer  "inventory"
+    t.date     "date_from",   default: '2016-10-01'
+    t.date     "date_to",     default: '2016-10-01'
     t.time     "time_from",   default: '2000-01-01 09:00:00'
     t.time     "time_to",     default: '2000-01-01 17:00:00'
     t.datetime "created_at",                                  null: false
@@ -116,15 +116,13 @@ ActiveRecord::Schema.define(version: 20160629090520) do
   create_table "products", force: :cascade do |t|
     t.string   "name"
     t.string   "subtitle"
-    t.text     "description"
-    t.text     "dimension"
     t.string   "cover_image_url"
     t.string   "outline_image_url"
     t.string   "dimension_image_url"
-    t.string   "target"
-    t.string   "pricing"
-    t.integer  "price"
-    t.integer  "inventory"
+    t.text     "description"
+    t.text     "dimension"
+    t.text     "target"
+    t.text     "pricing"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
   end
@@ -162,7 +160,6 @@ ActiveRecord::Schema.define(version: 20160629090520) do
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "product_details"
-  add_foreign_key "line_items", "products"
   add_foreign_key "orders", "discounts"
   add_foreign_key "orders", "members"
   add_foreign_key "product_details", "products"

@@ -1,5 +1,4 @@
 class LineItem < ActiveRecord::Base
-  belongs_to :product
   belongs_to :product_detail
   belongs_to :cart
   belongs_to :order
@@ -23,11 +22,9 @@ class LineItem < ActiveRecord::Base
     cols = cols.split(',')
     CSV.generate do |csv|
       csv << cols.map { |c| I18n.t "activerecord.attributes.line_item.#{c}" }
-      includes(:product, :product_detail, :cart, :order).each do |line_item|
+      includes(:product_detail, :cart, :order).each do |line_item|
         csv << cols.map do |col|
                  case col
-                 when 'product_id'
-                   line_item.product.name
                  when 'product_detail_id'
                    line_item.product_detail.description
                  when 'gender'

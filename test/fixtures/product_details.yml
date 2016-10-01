@@ -1,4 +1,5 @@
 detail_1:
+  id: 1
   description: 新竹
   product_id: 1
   date_from: 2016-09-01
@@ -6,8 +7,11 @@ detail_1:
   time_from: '09:00'
   time_to: '17:00'
   place: 清華大學普物實驗室
+  price: 7500
+  inventory: 100
 
 detail_2:
+  id: 2
   description: 桃園
   product_id: 2
   date_from: 2016-09-01
@@ -15,3 +19,5 @@ detail_2:
   time_from: '09:00'
   time_to: '17:00'
   place: 中央大學普物實驗室
+  price: 6500
+  inventory: 100

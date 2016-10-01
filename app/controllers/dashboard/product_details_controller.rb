@@ -38,6 +38,6 @@ class Dashboard::ProductDetailsController < DashboardController
     end
 
     def product_detail_params
-      params.require(:product_details).permit(:product_id, :description, :place, :date_from, :date_to, :time_from, :time_to)
+      params.require(:product_details).permit(:product_id, :description, :place, :price, :inventory, :date_from, :date_to, :time_from, :time_to)
     end
 end

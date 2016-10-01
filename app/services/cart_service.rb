@@ -2,12 +2,13 @@ module CartService
   class Error < StandardError; end
   class OrderIsPaid < Error; end
   class CartIsEmpty < Error; end
+  class ProductDetailNotFound < Error; end
 
   module_function
 
-  def add_product_to_cart product, product_detail_id, cart
-    cart.line_items.create!(product: product, product_detail_id: product_detail_id, unit_price: product.price)
-    product.decrement(:inventory).save!
+  def add_product_to_cart _d, product_detail, cart
+    cart.line_items.create!(product_detail: product_detail, unit_price: product_detail.price)
+    product_detail.decrement(:inventory).save!
   end
 
   def create_order_from_cart cart, params

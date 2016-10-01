@@ -4,11 +4,11 @@
 #
 # To use the locales, use `I18n.t`:
 #
-#     I18n.t 'hello'
+#     I18n.t hello
 #
 # In views, this is aliased to just `t`:
 #
-#     <%= t('hello') %>
+#     <%= t(hello) %>
 #
 # To use a different locale, set it with `I18n.locale`:
 #
@@ -23,60 +23,72 @@ zh-TW:
   activerecord:
     attributes:
       line_item:
-        id: '報名編號'
-        product_id: '課程'
-        product_detail_id: '場次'
-        cart_id: '購物車編號'
-        order_id: '訂單編號'
-        unit_price: '報名價格'
-        name: '姓名'
-        birth: '生日'
-        gender: '性別'
+        id: 報名編號
+        product_detail_id: 場次
+        cart_id: 購物車編號
+        order_id: 訂單編號
+        unit_price: 報名價格
+        name: 姓名
+        birth: 生日
+        gender: 性別
         gender_value:
-          male: '男'
-          female: '女'
-        ss_number: '身分證字號'
-        school: '學校'
-        grade: '年級'
-        parent_phone_number: '家長電話'
-        parent_email: '家長電子信箱'
-        food_preference: '飲食需求'
+          male: 男
+          female: 女
+        ss_number: 身分證字號
+        school: 學校
+        grade: 年級
+        parent_phone_number: 家長電話
+        parent_email: 家長電子信箱
+        food_preference: 飲食需求
         food_preference_value:
-          normal: '正常'
-          veggie: '素食'
-          no_beef: '不吃牛肉'
-          other: '其他'
-        note: '備註'
-        created_at: '建立日期'
-        updated_at: '更新日期'
+          normal: 正常
+          veggie: 素食
+          no_beef: 不吃牛肉
+          other: 其他
+        note: 備註
+        created_at: 建立日期
+        updated_at: 更新日期
       order:
-        first_name: '名'
-        last_name: '姓'
-        payment: '付款方式'
-        email: '電子信箱'
-        address: '地址'
+        first_name: 名
+        last_name: 姓
+        payment: 付款方式
+        email: 電子信箱
+        address: 地址
+      discount:
+        name: 名稱
+        discount_type: 折扣類型
+        discount_type_value:
+          group_discount: 團報
+          earlybird_discount: 早鳥
+          group_and_earlybird_discount: 團報加早鳥
     errors:
       messages:
-        record_invalid: '尚有必填欄位未填寫'
+        record_invalid: 尚有必填欄位未填寫
       models:
         line_item:
           attributes:
             name:
-              blank: '為必填欄位'
+              blank: 為必填欄位
             birth:
-              blank: '為必填欄位'
+              blank: 為必填欄位
             gender:
-              blank: '為必填欄位'
+              blank: 為必填欄位
             ss_number:
-              blank: '為必填欄位'
+              blank: 為必填欄位
             school:
-              blank: '為必填欄位'
+              blank: 為必填欄位
             grade:
-              blank: '為必填欄位'
+              blank: 為必填欄位
             parent_phone_number:
-              blank: '為必填欄位'
-              invalid: '需為連續10碼，例如：0912345678'
+              blank: 為必填欄位
+              invalid: 需為連續10碼，例如：0912345678
             parent_email:
-              blank: '為必填欄位'
+              blank: 為必填欄位
             food_preference:
-              blank: '為必填欄位'
+              blank: 為必填欄位
+        discount:
+          attributes:
+            name:
+              blank: 為必填欄位
+            discount_type:
+              blank: 為必填欄位
