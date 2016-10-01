@@ -1,5 +1,5 @@
 class MemberMailer < ApplicationMailer
-  default from: 'notifications@example.com'
+  default from: '清大ZU創意教學 <zubat.nthu@gmail.com>'
  
   def greeting(member)
     @member = member
