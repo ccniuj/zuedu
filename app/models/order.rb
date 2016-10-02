@@ -10,7 +10,7 @@ class Order < ActiveRecord::Base
 
   def price
     if discount_id
-      line_items.to_a.sum(&:price) - discount.factor
+      line_items.to_a.sum(&:price) - line_items.count * discount.factor
     else
       line_items.to_a.sum(&:price)
     end
