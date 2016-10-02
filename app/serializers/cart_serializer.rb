@@ -1,5 +1,5 @@
 class CartSerializer < ActiveModel::Serializer
-  attributes :id, :count, :price, :line_items
+  attributes :id, :count, :price, :line_items, :matchable_discount_name, :matchable_discount_factor
   
   def count
     object.line_items.size
@@ -22,5 +22,13 @@ class CartSerializer < ActiveModel::Serializer
 
   def price
     object.price.to_i
+  end
+
+  def matchable_discount_name
+    object.matchable_discount.name
+  end
+
+  def matchable_discount_factor
+    object.matchable_discount.factor
   end
 end

@@ -1,18 +1,18 @@
 discount_1:
-  name: 'earlybird'
+  name: 早鳥
   discount_type: 1
   factor: 500
   date_from: 2016-09-01
   date_to: 2016-10-10
 
 discount_2:
-  name: 'group'
+  name: 團報
   discount_type: 0
   prerequisite: 3
   factor: 300
 
 discount_3:
-  name: 'group_and_earlybird'
+  name: 團報加早鳥
   discount_type: 2
   prerequisite: 3
   factor: 700

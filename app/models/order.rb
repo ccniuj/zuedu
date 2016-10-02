@@ -23,7 +23,7 @@ class Order < ActiveRecord::Base
 private
 
   def match_discount
-    update_column :discount_id, DiscountMatcher.match(self)
+    update_column :discount_id, DiscountMatcher.match(self)&.id
   end
 
   def can_not_be_destroyed

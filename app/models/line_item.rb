@@ -15,7 +15,7 @@ class LineItem < ActiveRecord::Base
             on: :update
 
   def price
-    unit_price
+    product_detail.price
   end
 
   def self.to_csv cols

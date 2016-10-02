@@ -37,7 +37,7 @@ class LineItemSerializer < ActiveModel::Serializer
   end
 
   def unit_price
-    object.unit_price.to_i
+    object.product_detail.price.to_i
   end
 
   def is_paid

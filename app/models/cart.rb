@@ -7,4 +7,8 @@ class Cart < ActiveRecord::Base
   def price
     line_items.to_a.sum(&:price)
   end
+
+  def matchable_discount
+    DiscountMatcher.match self
+  end
 end
