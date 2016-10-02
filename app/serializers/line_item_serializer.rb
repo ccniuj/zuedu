@@ -7,7 +7,7 @@ class LineItemSerializer < ActiveModel::Serializer
              :cart_id,
              :order_id,
              :is_paid,
-             :unit_price,
+             :price,
              :name,
              :birth,
              :gender,
@@ -36,7 +36,7 @@ class LineItemSerializer < ActiveModel::Serializer
     I18n.t "activerecord.attributes.line_item.gender_value.#{object.gender}"
   end
 
-  def unit_price
+  def price
     object.product_detail.price.to_i
   end
 

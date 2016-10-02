@@ -18,21 +18,20 @@ class LineItem < ActiveRecord::Base
     product_detail.price
   end
 
-  def self.to_csv cols
-    cols = cols.split(',')
+  def self.to_csv product_detail_ids, cols
     CSV.generate do |csv|
       csv << cols.map { |c| I18n.t "activerecord.attributes.line_item.#{c}" }
-      includes(:product_detail, :cart, :order).each do |line_item|
+      where(product_detail_id: product_detail_ids).includes(:product_detail, :cart, :order).each do |line_item|
         csv << cols.map do |col|
                  case col
                  when 'product_detail_id'
-                   line_item.product_detail.description
+                   "#{line_item.product_detail.product.name} #{line_item.product_detail.description}"
                  when 'gender'
                    I18n.t "activerecord.attributes.line_item.gender_value.#{line_item.gender}"
                  when 'food_preference'
                    I18n.t "activerecord.attributes.line_item.food_preference_value.#{line_item.food_preference}"
                  else
-                   line_item[col]
+                   line_item.send(col)
                  end
                end
       end

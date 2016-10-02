@@ -24,10 +24,10 @@ zh-TW:
     attributes:
       line_item:
         id: 報名編號
-        product_detail_id: 場次
+        product_detail_id: 課程場次
         cart_id: 購物車編號
         order_id: 訂單編號
-        unit_price: 報名價格
+        price: 報名價格
         name: 姓名
         birth: 生日
         gender: 性別

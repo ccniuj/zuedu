@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   namespace :dashboard do
     resources :products, :product_details, :carts, :members, :discounts
     resources :line_items do
-      get 'download', on: :collection
+      post 'download_csv', on: :collection
     end
     resources :orders do
       post 'remind', on: :collection

@@ -23,8 +23,8 @@ class Dashboard::LineItemsController < DashboardController
     render json: { message: '刪除成功' }, status: :ok
   end
 
-  def download
-    render json: { csv: LineItem.to_csv(params[:cols]), message: '下載成功' }
+  def download_csv
+    render json: { csv: LineItem.to_csv(params[:product_detail_ids], params[:cols]), message: '下載成功' }
   end
 
   private
