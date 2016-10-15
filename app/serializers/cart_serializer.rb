@@ -25,10 +25,10 @@ class CartSerializer < ActiveModel::Serializer
   end
 
   def matchable_discount_name
-    object.matchable_discount.name
+    object.matchable_discount&.name
   end
 
   def matchable_discount_factor
-    object.matchable_discount.factor
+    object.matchable_discount&.factor
   end
 end
