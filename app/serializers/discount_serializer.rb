@@ -1,6 +1,7 @@
 class DiscountSerializer < ActiveModel::Serializer
   attributes :id, 
              :name,
+             :key,
              :discount_type,
              :discount_type_t,
              :prerequisite,
