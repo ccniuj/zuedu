@@ -1,4 +1,5 @@
 class MemberMailer < ApplicationMailer
+  before_action :add_inline_attachment!
   default from: '清大ZU創意教學 <zubat.nthu@gmail.com>'
  
   def greeting(member)
@@ -26,5 +27,11 @@ class MemberMailer < ApplicationMailer
   def payment_reminding(member)
     @member = member
     mail(to: @member.email, subject: '提醒您尚未繳費')
+  end
+
+  private
+
+  def add_inline_attachment!
+    attachments.inline['logo.png'] = File.read('public/images/logo.png')
   end
 end

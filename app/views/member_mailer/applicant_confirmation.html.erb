@@ -7,5 +7,6 @@
     <h1><%= @member.name %>，恭喜您成功更新報名資訊！</h1>
     <p>報名人姓名：<%= @line_item.name %></p>
     <p>祝您有個愉快的一天。</p>
+    <%= render partial: 'signature', locals: { image_url: attachments['logo.png'].url } %>
   </body>
 </html>

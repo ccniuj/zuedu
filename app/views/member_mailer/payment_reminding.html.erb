@@ -6,5 +6,6 @@
   <body>
     <h1><%= @member.name %>，提醒您尚未繳費！</h1>
     <p>祝您有個愉快的一天。</p>
+    <%= render partial: 'signature', locals: { image_url: attachments['logo.png'].url } %>
   </body>
 </html>
