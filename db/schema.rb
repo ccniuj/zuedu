@@ -31,8 +31,8 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.integer  "prerequisite",  default: 0
     t.integer  "discount_type", default: 0
     t.float    "factor",        default: 0.0
-    t.date     "date_from",     default: '2016-10-01'
-    t.date     "date_to",       default: '2016-10-01'
+    t.date     "date_from",     default: '2016-10-22'
+    t.date     "date_to",       default: '2016-10-22'
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
   end
@@ -41,7 +41,6 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.integer  "product_detail_id"
     t.integer  "cart_id"
     t.integer  "order_id"
-    t.decimal  "unit_price",          default: 0.0
     t.string   "name",                default: ""
     t.date     "birth"
     t.integer  "gender",              default: 0
@@ -52,8 +51,8 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.string   "note",                default: ""
     t.string   "parent_phone_number", default: ""
     t.string   "parent_email",        default: ""
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
@@ -103,8 +102,8 @@ ActiveRecord::Schema.define(version: 20160629090520) do
     t.string   "place"
     t.integer  "price"
     t.integer  "inventory"
-    t.date     "date_from",   default: '2016-10-01'
-    t.date     "date_to",     default: '2016-10-01'
+    t.date     "date_from",   default: '2016-10-22'
+    t.date     "date_to",     default: '2016-10-22'
     t.time     "time_from",   default: '2000-01-01 09:00:00'
     t.time     "time_to",     default: '2000-01-01 17:00:00'
     t.datetime "created_at",                                  null: false

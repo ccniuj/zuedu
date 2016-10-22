@@ -20,3 +20,4 @@ production:
     hash_iv: <%= ENV['ALLPAY_HASH_IV'] %>
     trade_desc: 築優教育
     return_url: http://api.zu-edu.com/allpay/callback
+    mode: :production
