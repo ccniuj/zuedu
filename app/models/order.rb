@@ -5,7 +5,7 @@ class Order < ActiveRecord::Base
   has_many :transactions
   after_commit :match_discount, on: :create
   before_destroy :can_not_be_destroyed
-  enum payment: [ 'Credit', 'CVS' ]
+  enum payment: ['Credit', 'CVS', 'ATM']
   validates :first_name, :last_name, :payment, :email, :address, presence: true 
 
   def price
