@@ -4,29 +4,24 @@ class MemberMailer < ApplicationMailer
  
   def greeting(member)
     @member = member
-    mail(to: @member.email, subject: '恭喜您註冊成為築優教育的會員')
+    mail(to: @member.email, subject: 'ZU | 歡迎加入會員')
   end
 
-  def add_to_cart_notification(member)
+  def payment_notification(member, order)
     @member = member
-    mail(to: @member.email, subject: '您已在築優教育註冊一門課程')
-  end
-
-  def applicant_confirmation(member, line_item)
-    @member = member
-    @line_item = line_item
-    mail(to: @member.email, subject: '您已更新報名資訊')
-  end
-
-  def payment_notification(member, transaction)
-    @member = member
-    @transaction = transaction
-    mail(to: @member.email, subject: '恭喜您付款成功')
+    @order = order
+    mail(to: @member.email, subject: 'ZU | 繳費通知')
   end
 
   def payment_reminding(member)
     @member = member
-    mail(to: @member.email, subject: '提醒您尚未繳費')
+    mail(to: @member.email, subject: 'ZU | 繳費最後通知')
+  end
+
+  def payment_success(member, transaction)
+    @member = member
+    @transaction = transaction
+    mail(to: @member.email, subject: 'ZU | 完成報名')
   end
 
   private

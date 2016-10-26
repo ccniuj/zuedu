@@ -4,8 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @member.name %>，恭喜您成為我們的會員！</h1>
-    <p>祝您有個愉快的一天。</p>
+    <%= @member.name %> 爸爸/媽媽 您好：
+    歡迎加入清大 ZU 築優教育黃金會員！<br/>
+    在這裡您能找到創造力相關培育課程以及程式教育訓練營資訊，歡迎您讓孩子們來與我們一同成長！<br/>
+    更多的即時消息歡迎上我們的 Facebook 粉絲專業查看！<br/>
+    網址支援→→ https://www.facebook.com/zubat.edu.88/<br/>
     <%= render partial: 'signature', locals: { image_url: attachments['logo.png'].url } %>
   </body>
 </html>

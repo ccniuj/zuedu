@@ -9,7 +9,6 @@ class LineItemsController < ApplicationController
   def create
     product_detail = ProductDetail.find(params[:product_detail_id])
     CartService.add_product_to_cart(nil, product_detail, current_cart)
-    MemberMailer.add_to_cart_notification(current_member).deliver_later
     render json: { message: '新增成功' }
   rescue ActiveRecord::RecordNotFound
     render json: { message: '找不到該課程' }, status: 422
@@ -17,7 +16,6 @@ class LineItemsController < ApplicationController
 
   def update
     if @line_item.update line_item_params
-      MemberMailer.applicant_confirmation(current_member, @line_item).deliver_later
       render json: { message: '更新成功' }
     else
       render json: { message: @line_item.errors.full_messages.first }, status: 422

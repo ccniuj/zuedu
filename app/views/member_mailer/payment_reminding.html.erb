@@ -4,8 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1><%= @member.name %>，提醒您尚未繳費！</h1>
-    <p>祝您有個愉快的一天。</p>
+    親愛的家長您好：<br/>
+    還記得您幫孩子報名的超豐富課程嗎？<br/>
+    明天是最後一天的繳費期限囉，若需要延長繳費日期請直接回覆此封 e-mail ，將有專人協助您保留上課名額哦！<br/>
+    繳費資訊請參考：www.XXXXXXXXX.XXXXXX.XXX<br/>
     <%= render partial: 'signature', locals: { image_url: attachments['logo.png'].url } %>
   </body>
 </html>

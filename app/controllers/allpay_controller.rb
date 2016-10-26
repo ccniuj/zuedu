@@ -19,7 +19,7 @@ class AllpayController < ApplicationController
   def callback
     transaction = Transaction.find_by!(trade_number: params[:MerchantTradeNo])
     transaction.update!(params: request.POST)
-    MemberMailer.payment_notification(transaction.order.member, transaction).deliver_later
+    MemberMailer.payment_success(transaction.order.member, transaction).deliver_later
     render text: :'1|OK'
   rescue ActiveRecord::RecordNotFound
     render text: :'0|transaction record not found'
