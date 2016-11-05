@@ -7,6 +7,7 @@ class OrderSerializer < ActiveModel::Serializer
              :first_name,
              :last_name,
              :payment,
+             :price,
              :email,
              :address,
              :line_items,
