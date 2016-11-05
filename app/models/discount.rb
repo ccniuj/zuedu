@@ -5,6 +5,6 @@ class Discount < ActiveRecord::Base
   validates :name, :discount_type, presence: true 
 
   def generate_key
-  	update key: SecureRandom.hex
+  	update key: SecureRandom.hex(4)
   end
 end
