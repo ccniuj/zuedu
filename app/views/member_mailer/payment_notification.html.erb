@@ -4,7 +4,10 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-  <%= @member.name %> 的家長您好：<br/>
+    <%= @member.name %> 的爸比/媽咪 您好：<br/>
+    <br/>
+    謝謝您幫孩子報名清大 ZU 創意教學團隊的寒假課程，我們已收到您的報名資料囉！<br/>
+    若是對於我們寒假的課程有任何疑問，歡迎直接撥打信末的電話諮詢哦，我們也將有專員在36小時內直接聯繫您！<br/>
     <br/>
     如果您已經很了解我們的上課內容，想要在這個寒假將孩子交給我們，那請您趕緊完成付款，幫孩子卡下這難得的一個寒假吧！ (( 偷偷跟您說，在填單後的三天內，我們會幫您把名額先保留起來哦，若是超過三天還是猶豫不決的話就要先釋放給其他孩子了><<br/>
     <br/>
@@ -24,7 +27,7 @@
     <% @order.line_items.each do |applicant| %>
       學員：<%= applicant.name %><br/>
       年級：<%= applicant.grade %><br/>
-      報名場次：<%= applicant.product_detail.description %><br/>
+      報名場次：<%= applicant.product_detail.product.name %> - <%= applicant.product_detail.description %><br/>
       時間：<%= applicant.product_detail.date_from %> ~ <%= applicant.product_detail.date_to %><br/>
       家長聯絡電話：<%= applicant.parent_phone_number %><br/>
       <br/>
