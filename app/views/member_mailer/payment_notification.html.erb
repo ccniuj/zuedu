@@ -4,9 +4,22 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    親愛的家長您好：<br/>
-    已收到您填寫的報名表單，感謝您的報名。<br/>
-    以下是您所報名的資料，若有誤請回信告知我們，再由專人協助您修改：<br/>
+  <%= @member.name %> 的家長您好：<br/>
+    <br/>
+    如果您已經很了解我們的上課內容，想要在這個寒假將孩子交給我們，那請您趕緊完成付款，幫孩子卡下這難得的一個寒假吧！ (( 偷偷跟您說，在填單後的三天內，我們會幫您把名額先保留起來哦，若是超過三天還是猶豫不決的話就要先釋放給其他孩子了><<br/>
+    <br/>
+    若是您沒有在我們的網站上完成付款，也可以直接轉帳到我們的帳戶喔！<br/>
+    以下是費用的付款帳號：<br/>
+    <br/>
+    ================<br/>
+    玉山銀行 808<br/>
+    戶名：築優教育顧問有限公司<br/>
+    帳號：0130-940-021257<br/>
+    ================<br/>
+    <br/>
+    請在付款完後填寫帳號後五碼的回填問卷，讓我們能夠馬上幫您處理您的款項喔！<br/>
+    <br/>
+    後五碼填寫表單： <a href='https://docs.google.com/forms/d/e/1FAIpQLScekDjg6JITrR07V71RlUn0qS7D4vPAxabJgb8bdGs2RKKxdA/viewform?c=0&w=1'>表單連結</a><br/>
     --<br/>
     <% @order.line_items.each do |applicant| %>
       學員：<%= applicant.name %><br/>

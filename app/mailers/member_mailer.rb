@@ -18,10 +18,9 @@ class MemberMailer < ApplicationMailer
     mail(to: @member.email, subject: 'ZU | 繳費最後通知')
   end
 
-  def payment_success(member, transaction)
-    @member = member
-    @transaction = transaction
-    mail(to: @member.email, subject: 'ZU | 完成報名')
+  def payment_success(applicant)
+    @applicant = applicant
+    mail(to: @applicant.parent_email, subject: 'ZU | 完成報名')
   end
 
   private

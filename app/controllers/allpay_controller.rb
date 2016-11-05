@@ -15,11 +15,10 @@ class AllpayController < ApplicationController
     redirect_to order, alert: "訂單 ##{order.id} 已經付款了"
   end
 
-  # post /allpay/callback
   def callback
     transaction = Transaction.find_by!(trade_number: params[:MerchantTradeNo])
     transaction.update!(params: request.POST)
-    MemberMailer.payment_success(transaction.order.member, transaction).deliver_later
+    send_email! transaction
     render text: :'1|OK'
   rescue ActiveRecord::RecordNotFound
     render text: :'0|transaction record not found'
@@ -27,5 +26,13 @@ class AllpayController < ApplicationController
     render text: :'0|transaction not saved'
   rescue
     render text: "0|#{$!}"
+  end
+
+  private
+
+  def send_email! transaction
+    transaction.order.line_items.each do |applicant|
+      MemberMailer.payment_success(applicant).deliver_later
+    end
   end
 end

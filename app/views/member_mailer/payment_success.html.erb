@@ -4,18 +4,22 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <%= @member.name %> 的家長您好：<br/>
-    恭喜您完成報名及付款手續！<br/>
-    以下是報名資訊：<br/>
+    <%= @applicant.name %> 的家長您好：<br/>
+    我們已經核對到您的款項囉！<br/>
+    <br/>
+    謝謝您在這個寒假將孩子交給我們，我們會盡全力地讓孩子在做中學，讓孩子渡過一個精彩的寒假！！<br/>
+    <br/>
+    後續的課程通知會在開課一個月前發出，在這之間若您有任何問題，歡迎隨時與我們聯絡！<br/>
+    <br/>
+    還沒追蹤到我們的臉書的話，趕緊在下面的連結中點擊追蹤喔！！在上面會不定期的更新各式科學小短片以及科學實驗互動直播！<br/>
+    <br/>
     --<br/>
-    <% @transaction.order.line_items.each do |applicant| %>
-      學員：<%= applicant.name %><br/>
-      年級：<%= applicant.grade %><br/>
-      報名場次：<%= applicant.product_detail.description %><br/>
-      時間：<%= applicant.product_detail.date_from %> ~ <%= applicant.product_detail.date_to %><br/>
-      家長聯絡電話：<%= applicant.parent_phone_number %><br/>
-      <br/>
-    <% end %>
+    學員：<%= @applicant.name %><br/>
+    年級：<%= @applicant.grade %><br/>
+    報名場次：<%= @applicant.product_detail.product.name %> - <%= @applicant.product_detail.description %><br/>
+    時間：<%= @applicant.product_detail.date_from %> ~ <%= @applicant.product_detail.date_to %><br/>
+    家長聯絡電話：<%= @applicant.parent_phone_number %><br/>
+    <br/>
     --<br/>
     <a href='https://www.facebook.com/zubat.edu.88/'>點我</a>馬上追蹤最新課程資訊
     <%= render partial: 'signature', locals: { image_url: attachments['logo.png'].url } %>
