@@ -14,10 +14,11 @@ test:
   <<: *default
 
 production:
-  allpay:
-    merchant_id: <%= ENV['ALLPAY_MERCHANT_ID'] %>
-    hash_key: <%= ENV['ALLPAY_HASH_KEY'] %>
-    hash_iv: <%= ENV['ALLPAY_HASH_IV'] %>
-    trade_desc: 築優教育
-    return_url: http://api.zu-edu.com/allpay/callback
-    mode: :production
+  <<: *default
+  # allpay:
+  #   merchant_id: <%= ENV['ALLPAY_MERCHANT_ID'] %>
+  #   hash_key: <%= ENV['ALLPAY_HASH_KEY'] %>
+  #   hash_iv: <%= ENV['ALLPAY_HASH_IV'] %>
+  #   trade_desc: 築優教育
+  #   return_url: http://api.zu-edu.com/allpay/callback
+  #   mode: :production
