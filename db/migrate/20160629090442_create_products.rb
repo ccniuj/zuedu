@@ -6,6 +6,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :cover_image_url
       t.string :outline_image_url
       t.string :dimension_image_url
+      
       t.text :description
       t.text :dimension
       t.text :target
