@@ -2,11 +2,13 @@ default: &default
   adapter: postgresql
   encoding: unicode
   username: davidjuin0519
+
   pool: 5
   timeout: 5000
 
 development:
   <<: *default
+  username: daniel840829
   database: zuedu_dev
 
 test:
