@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
+  
   devise_for :members, controllers: { sessions: 'sessions', omniauth_callbacks: 'members/omniauth_callbacks' }
-
+  
   devise_for :users, controllers: { sessions: 'sessions' }
 
   resources :carts, only: %i[index]

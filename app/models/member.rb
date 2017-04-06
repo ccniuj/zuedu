@@ -9,15 +9,18 @@ class Member < ActiveRecord::Base
   after_commit :send_greeting_email, on: :create
 
   def self.from_omniauth(auth)
+    binding.pry
     where(provider: auth.provider, uid: auth.uid).first_or_create do |member|
       member.email = auth.info.email
-      member.password = Devise.friendly_token[0,20]
       member.name = auth.info.name
+      member.password = Devise.friendly_token[0,20]
+      
       member.avatar = auth.info.image
     end
   end
 
   def self.new_with_session(params, session)
+
     super.tap do |member|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
         member.email = data["email"] if member.email.blank?
@@ -26,6 +29,8 @@ class Member < ActiveRecord::Base
   end
 
   def send_greeting_email
+
     MemberMailer.greeting(self).deliver_later
   end
+
 end
