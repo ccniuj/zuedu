@@ -247,8 +247,8 @@ Devise.setup do |config|
     Rails.application.secrets.FACEBOOK_APP_SECRET,
     
     client_options: {
-      site: 'https://graph.facebook.com/v2.8',
-      authorize_url: "https://www.facebook.com/v2.8/dialog/oauth"
+      site: 'https://graph.facebook.com/v2.3',
+      authorize_url: "https://www.facebook.com/v2.3/dialog/oauth"
     },
     token_params: { parse: :json }
 
