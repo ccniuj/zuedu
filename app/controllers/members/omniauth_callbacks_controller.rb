@@ -1,7 +1,7 @@
 class Members::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def facebook
-    binding.pry
+
     @member = Member.from_omniauth(request.env["omniauth.auth"])
     if @member.persisted?
       sign_in @member, :event => :authentication #this will throw if @member is not activated

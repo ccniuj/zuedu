@@ -9,7 +9,7 @@ class Member < ActiveRecord::Base
   after_commit :send_greeting_email, on: :create
 
   def self.from_omniauth(auth)
-    binding.pry
+
     where(provider: auth.provider, uid: auth.uid).first_or_create do |member|
       member.email = auth.info.email
       member.name = auth.info.name
