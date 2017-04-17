@@ -245,7 +245,6 @@ Devise.setup do |config|
   config.omniauth :facebook, 
     Rails.application.secrets.FACEBOOK_APP_ID, 
     Rails.application.secrets.FACEBOOK_APP_SECRET,
-    
     client_options: {
       site: 'https://graph.facebook.com/v2.3',
       authorize_url: "https://www.facebook.com/v2.3/dialog/oauth"

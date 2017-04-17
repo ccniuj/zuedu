@@ -22,7 +22,7 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def destroy
-    @order.destroy
+    respond_with @order.destroy
     render json: { message: '刪除成功' }, status: :ok
   end
 
@@ -34,9 +34,10 @@ class Dashboard::OrdersController < DashboardController
   private
     def set_order
       @order = Order.find params[:id]
+
     end
 
     def order_params
-      params.require(:orders).permit(:discount_id, :first_name, :last_name, :email, :address)
+      params.require(:orders).permit(:id,:discount_id, :first_name, :last_name, :email, :address)
     end
 end
