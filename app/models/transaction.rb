@@ -25,10 +25,10 @@ private
     if params["RtnCode"]=="1"
       logger.info "PAY"
       send_pay_success_email! self
-    elsif params.["RtnCode"]=="10100073"
+    elsif params["RtnCode"]=="10100073"
       logger.info "CVSSS"
       send_cvs_info_email! self
-    elsif params.["RtnCode"]=="2"
+    elsif params["RtnCode"]=="2"
       logger.info "ATMM"
       send_atm_info_email! self
     else
