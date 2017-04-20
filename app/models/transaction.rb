@@ -2,7 +2,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :order
   after_initialize :generate_trade_number
   validate :check_trade_number, :check_mac_value, on: :update
-  after_commit :check_pay
+  after_update :check_pay
   def to_param
     trade_number
   end
@@ -21,7 +21,7 @@ private
     errors.add(:params, 'wrong mac value') unless Allpay.client.verify_mac(params)
   end
   def check_pay
-    logger.info(parms["RtnCode"])
+    logger.info(params["RtnCode"])
     if params["RtnCode"]=="1"
       logger.info "PAY"
       send_pay_success_email! self
