@@ -20,11 +20,16 @@ class AllpayController < ApplicationController
     transaction.update!(params: request.POST)
     puts transaction[:RtnCode]
     if transaction[:RtnCode]==1
+      logger.info "PAY"
       send_pay_success_email! transaction
     elsif transaction[:RtnCode]==10100073
+      logger.info "CVSSS"
       send_cvs_info_email! transaction
     elsif transaction[:RtnCode]==2
+      logger.info "ATMM"
       send_atm_info_email! transaction
+    else
+      logger.info "error"
     end
     render text: :'1|OK'
   rescue ActiveRecord::RecordNotFound
@@ -39,24 +44,21 @@ class AllpayController < ApplicationController
 
   def send_pay_success_email! transaction
     transaction.order.line_items.each do |applicant|
-      MemberMailer.payment_success(applicant).deliver_now
-      #remember change it to the deliver_later
+      MemberMailer.payment_success(applicant).deliver_now#remember change it to the deliver_later
     end
   end
   def send_atm_info_email! transaction
 
     @params=transaction.params
     @email=transaction.order.line_items.parent_email
-    logger.info "params #{@params} ,email #{email}"
-      MemberMailer.atm_info(@params,@email).deliver_now
-      #remember change it to the deliver_later
-    end
+    logger.info "params #{@params} ,email #{@email}"
+    MemberMailer.atm_info(@params,@email).deliver_now#remember change it to the deliver_later
+
   end
   def send_cvs_info_email! transaction
     @params=transaction.params
     @email=transaction.order.line_items.parent_email
-    logger.info "params #{@params} ,email #{email}"
-      MemberMailer.cvs_info(@params,@email).deliver_now
-      #remember change it to the deliver_later
+    logger.info "params #{@params} ,email #{@email}"
+    MemberMailer.cvs_info(@params,@email).deliver_now #remember change it to the deliver_later
   end
 end
