@@ -18,7 +18,10 @@ class AllpayController < ApplicationController
   def callback
     transaction = Transaction.find_by!(trade_number: params[:MerchantTradeNo])
     transaction.update!(params: request.POST)
-    send_email! transaction
+    puts transaction[:RtnCode]
+    if transaction[:RtnCode]==1
+      send_email! transaction
+    end
     render text: :'1|OK'
   rescue ActiveRecord::RecordNotFound
     render text: :'0|transaction record not found'
@@ -32,7 +35,8 @@ class AllpayController < ApplicationController
 
   def send_email! transaction
     transaction.order.line_items.each do |applicant|
-      MemberMailer.payment_success(applicant).deliver_later
+      MemberMailer.payment_success(applicant).deliver_now
+      #remember change it to the deliver_later
     end
   end
 end

@@ -2,7 +2,8 @@ class LineItem < ActiveRecord::Base
   belongs_to :product_detail
   belongs_to :cart
   belongs_to :order
-  before_destroy :check_order_existence
+# for delete order
+#  before_destroy :check_order_existence
   enum gender: [ 'male', 'female' ]
   enum food_preference: ['normal', 'veggie', 'no_beef', 'other']
 
@@ -37,6 +38,7 @@ class LineItem < ActiveRecord::Base
       end
     end
   end
+=begin for delete order
 
 private
   def check_order_existence
@@ -45,4 +47,5 @@ private
       false
     end
   end
+=end
 end

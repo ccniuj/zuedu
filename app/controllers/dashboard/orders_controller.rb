@@ -27,7 +27,7 @@ class Dashboard::OrdersController < DashboardController
   end
 
   def remind
-    MemberMailer.payment_reminding(@order.member).deliver_later
+    MemberMailer.payment_reminding(@order.member).deliver_now
     render json: { message: '通知成功' }, status: :ok
   end
 

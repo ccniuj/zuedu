@@ -10,16 +10,19 @@ class MemberMailer < ApplicationMailer
   def payment_notification(member, order)
     @member = member
     @order = order
+    puts @member.email
     mail(to: @member.email, subject: 'ZU | 繳費通知')
   end
 
   def payment_reminding(member)
     @member = member
+    puts @member.email
     mail(to: @member.email, subject: 'ZU | 繳費最後通知')
   end
 
   def payment_success(applicant)
     @applicant = applicant
+
     mail(to: @applicant.parent_email, subject: 'ZU | 完成報名')
   end
 
