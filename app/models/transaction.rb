@@ -42,12 +42,14 @@ private
   end
   def send_atm_info_email!
     @params=params
+    logger.info "params #{@params}"
     @email=self.order.line_items.parent_email
     logger.info "params #{@params} ,email #{@email}"
     MemberMailer.atm_info(@params,@email).deliver_now#remember change it to the deliver_later
   end
   def send_cvs_info_email!
     @params=params
+    logger.info "params #{@params}"
     @email=self.order.line_items.parent_email
     logger.info "params #{@params} ,email #{@email}"
     MemberMailer.cvs_info(@params,@email).deliver_now #remember change it to the deliver_later
