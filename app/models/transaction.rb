@@ -2,7 +2,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :order
   after_initialize :generate_trade_number
   validate :check_trade_number, :check_mac_value, on: :update
-  after_update :check_pay
+  after_commit :check_pay
   def to_param
     trade_number
   end
