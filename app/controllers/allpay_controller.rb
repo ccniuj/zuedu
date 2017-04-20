@@ -18,7 +18,7 @@ class AllpayController < ApplicationController
   def callback
     transaction = Transaction.find_by!(trade_number: params[:MerchantTradeNo])
     transaction.update!(params: request.POST)
-    puts transaction[:RtnCode]
+    logger.info(transaction[:RtnCode])
     if transaction[:RtnCode]==1
       logger.info "PAY"
       send_pay_success_email! transaction
@@ -48,12 +48,10 @@ class AllpayController < ApplicationController
     end
   end
   def send_atm_info_email! transaction
-
     @params=transaction.params
     @email=transaction.order.line_items.parent_email
     logger.info "params #{@params} ,email #{@email}"
     MemberMailer.atm_info(@params,@email).deliver_now#remember change it to the deliver_later
-
   end
   def send_cvs_info_email! transaction
     @params=transaction.params
