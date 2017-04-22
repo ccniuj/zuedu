@@ -28,7 +28,7 @@ class MemberMailer < ApplicationMailer
     @order =transaction.order
     logger.info "123"
     @params = transaction.params
-    mail(to: order.email, subject: 'ZU | ATM_INFO')
+    mail(to: @order.email, subject: 'ZU | ATM_INFO')
     logger.info "done"
   end
   def cvs_info(transaction)
@@ -36,7 +36,7 @@ class MemberMailer < ApplicationMailer
     @order =transaction.order
     logger.info "123"
     @params = transaction.params
-    mail(to: order.email, subject: 'ZU | CVS_INFO')
+    mail(to: @order.email, subject: 'ZU | CVS_INFO')
     logger.info "done"
   end
   private
