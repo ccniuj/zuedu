@@ -48,9 +48,8 @@ private
   end
   def send_cvs_info_email
     logger.info "#{self}"
-    self.each do |transaction|
-    logger.info "#{transaction}"
-    MemberMailer.cvs_info.deliver_now #remember change it to the deliver_later
+    MemberMailer.cvs_info.deliver_now
+
     end
   end
 
