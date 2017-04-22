@@ -41,11 +41,11 @@ private
     end
   end
   def send_atm_info_email
-    self do |transaction|
+    self.each do |transaction|
     MemberMailer.atm_info(transaction).deliver_now#remember change it to the deliver_later
   end
   def send_cvs_info_email
-    self do |transaction|
+    self.each do |transaction|
     MemberMailer.cvs_info(transaction).deliver_now #remember change it to the deliver_later
   end
 end
