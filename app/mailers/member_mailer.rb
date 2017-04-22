@@ -24,20 +24,20 @@ class MemberMailer < ApplicationMailer
     mail(to: @applicant.parent_email, subject: 'ZU | 完成報名')
   end
   def atm_info(transaction)
-    log.info "123"
+    logger.info "123"
     @order =transaction.order
-    log.info "123"
+    logger.info "123"
     @params = transaction.params
     mail(to: order.email, subject: 'ZU | ATM_INFO')
-    log.info "done"
+    logger.info "done"
   end
   def cvs_info(transaction)
-    log.info "123"
+    logger.info "123"
     @order =transaction.order
-    log.info "123"
+    logger.info "123"
     @params = transaction.params
     mail(to: order.email, subject: 'ZU | CVS_INFO')
-    log.info "done"
+    logger.info "done"
   end
   private
   def add_inline_attachment!
