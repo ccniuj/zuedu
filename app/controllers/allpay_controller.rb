@@ -19,7 +19,7 @@ class AllpayController < ApplicationController
     transaction = Transaction.find_by!(trade_number: params[:MerchantTradeNo])
     transaction.update!(params: request.POST)
     
-    
+    logger.info(params["RtnCode"])
     render text: :'1|OK'
   rescue ActiveRecord::RecordNotFound
     render text: :'0|transaction record not found'
