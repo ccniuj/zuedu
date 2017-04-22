@@ -43,12 +43,12 @@ private
   def send_atm_info_email
     logger.info "#{self}"
     @trans = self
-    MemberMailer.atm_info(self).deliver_now#remember change it to the deliver_later
+    MemberMailer.atm_info(@trans).deliver_now#remember change it to the deliver_later
   end
   def send_cvs_info_email
     logger.info "#{self}"
     @trans = self
-    MemberMailer.cvs_info(self).deliver_now
+    MemberMailer.cvs_info(@trans).deliver_now
 
 
   end
