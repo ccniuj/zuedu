@@ -50,7 +50,7 @@ private
     logger.info "#{self}"
     MemberMailer.cvs_info.deliver_now
 
-    end
+
   end
 
 end
