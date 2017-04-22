@@ -27,7 +27,7 @@ private
       send_pay_success_email!
     elsif params["RtnCode"]=="10100073"
       logger.info "CVSSS"
-      send_cvs_info_email!
+      send_pay_success_email!
     elsif params["RtnCode"]=="2"
       logger.info "ATMM"
       send_atm_info_email!
@@ -35,7 +35,7 @@ private
       logger.info "error"
     end
   end
-  def send_pay_success_email
+  def send_pay_success_email!
     self.order.line_items.each do |applicant|
       MemberMailer.payment_success(applicant).deliver_now#remember change it to the deliver_later
     end
