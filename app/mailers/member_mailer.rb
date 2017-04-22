@@ -30,11 +30,9 @@ class MemberMailer < ApplicationMailer
     mail(to: order.email, subject: 'ZU | ATM_INFO')
     log.info "done"
   end
-  def cvs_info(transaction)
-    log.info(transaction)
-    @order =transaction.order
-    @params = transaction.params
-    mail(to: order.email, subject: 'ZU | CVS_INFO')
+  def cvs_info
+
+    mail(to: 'daniel840829@yahoo.com.tw', subject: 'ZU | CVS_INFO')
     log.info "done"
   end
   private
