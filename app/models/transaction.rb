@@ -27,7 +27,7 @@ private
       send_pay_success_email
     elsif params["RtnCode"]=="10100073"
       logger.info "CVSSS"
-      send_pay_success_email
+      send_cvs_info_email
     elsif params["RtnCode"]=="2"
       logger.info "ATMM"
       send_atm_info_email
@@ -41,12 +41,12 @@ private
     end
   end
   def send_atm_info_email
-    self.each do |transaction|
+    self do |transaction|
     MemberMailer.atm_info(transaction).deliver_now#remember change it to the deliver_later
     end
   end
   def send_cvs_info_email
-    self.each do |transaction|
+    self do |transaction|
     MemberMailer.cvs_info(transaction).deliver_now #remember change it to the deliver_later
     end
   end
