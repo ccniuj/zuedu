@@ -4,8 +4,12 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <%= @params["RtnCode"] %>
-    <%= @params["ExpireDate"] %>
+您選擇的繳費方式為超商繳費<br/>
+交易序號為<%= @params["TradeNo"] %><br/>
+繳費金額為<%= @params["TradeAmt"] %><br/>
+請在<%= @params["ExpireDate"] %>前到7-11/全家/萊爾富/OK超商的繳費機台輸入<%=@params["PaymentNo"]%><br/>
+
+    
     
   </body>
 </html>
