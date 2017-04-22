@@ -24,13 +24,13 @@ private
     logger.info(params["RtnCode"])
     if params["RtnCode"]=="1"
       logger.info "PAY"
-      send_pay_success_email!
+    #  send_pay_success_email!
     elsif params["RtnCode"]=="10100073"
       logger.info "CVSSS"
-      send_cvs_info_email!
+    # send_cvs_info_email!
     elsif params["RtnCode"]=="2"
       logger.info "ATMM"
-      send_atm_info_email!
+    # send_atm_info_email!
     else
       logger.info "error"
     end
