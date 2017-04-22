@@ -23,15 +23,15 @@ class MemberMailer < ApplicationMailer
     @applicant = applicant
     mail(to: @applicant.parent_email, subject: 'ZU | 完成報名')
   end
-  def atm_info(params,email)
-    @params = params
-    @email = email
-    mail(to: @email, subject: 'ZU | ATM_INFO')
+  def atm_info(transaction)
+    @order =transaction.order
+    @params = transaction.params
+    mail(to: order.email, subject: 'ZU | ATM_INFO')
   end
-  def cvs_info(params,email)
-    @params = params
-    @email = email
-    mail(to: @email, subject: 'ZU | CVS_INFO')
+  def cvs_info(transaction)
+    @order =transaction.order
+    @params = transaction.params
+    mail(to: order.email, subject: 'ZU | CVS_INFO')
   end
   private
   def add_inline_attachment!
