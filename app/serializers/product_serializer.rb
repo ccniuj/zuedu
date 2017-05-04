@@ -10,8 +10,8 @@ class ProductSerializer < ActiveModel::Serializer
              :outline_image_url,
              :dimension_image_url,
              :activityUrl,
-             :product_details
-
+             :product_details,
+             :detailimage
   def product_details
     object.product_details.sort.map do |pd|
       ProductDetailSerializer.new pd

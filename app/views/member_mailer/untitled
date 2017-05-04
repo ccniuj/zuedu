@@ -1,0 +1,15 @@
+
+
+ATM
+BankCode 繳費銀行代碼 String (3) 812
+vAccount 繳費虛擬帳號 String (16) 9103522175887271
+ExpireDate 繳費期限 
+
+CVS
+
+PaymentNo 繳費代碼 String(14) 如果是條碼，則此欄位回傳空白 GW130412257496
+ExpireDate 
+
+信用卡測試卡號: 4311-9522-2222-2222
+信用卡測試安全碼: 222
+信用卡測試有效年月: 設定在未來時間即可

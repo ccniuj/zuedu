@@ -5,14 +5,11 @@ class Dashboard::CartsController < DashboardController
     @carts = Cart.all.sort
     render json: @carts
   end
-  
   def edit
     render json: @cart
   end
-
   def update
   end
-
   private
     def set_cart
       @cart = Cart.find params[:id]
